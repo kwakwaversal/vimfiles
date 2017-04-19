@@ -3,15 +3,14 @@ My ~/.vim directory. All hail vim.
 
 # Installation
 
-My vim environment & plugins. Plugins incorporated wih git submodule.
-To use this:
+Plugins incorporated wih git submodule. Use the `--recursive` option when
+cloning this repository.
 
 ```bash
-cd ~/
-git clone --recursive git@github.com:kwakwaversal/vimrc.git .vim
+git clone --recursive git@github.com:kwakwaversal/vimrc.git ~/.vim
 ```
 
-Set up a symbolic link to this repository's `vimrc`.
+Set up a symbolic link to this repository's `vimrc` file.
 
 ```sh
 ln -s ~/.vim/vimrc ~/.vimrc
