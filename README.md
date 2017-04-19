@@ -3,7 +3,7 @@ My ~/.vim directory. All hail vim.
 
 # Installation
 
-Plugins incorporated wih git submodule. Use the `--recursive` option when
+Plugins incorporated with `git submodule`. Use the `--recursive` option when
 cloning this repository.
 
 ```bash
