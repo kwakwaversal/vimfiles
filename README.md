@@ -1,6 +1,8 @@
 # vimrc
 My ~/.vim directory. All hail vim.
 
+# Installation
+
 My vim environment & plugins. Plugins incorporated wih git submodule.
 To use this:
 
