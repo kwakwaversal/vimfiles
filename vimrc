@@ -32,6 +32,7 @@ set incsearch                   " incremental search-as-you-type
 set modeline                    " override vim options per file
 set number                      " display line numbers
 set ruler                       " show status bar with current file info
+set scrolloff=5                 " number of context lines above and below cursor
 set showmatch matchtime=4       " show matching brackets for 4 seconds
 
 " Super fancy status lines
