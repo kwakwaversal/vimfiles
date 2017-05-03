@@ -79,9 +79,9 @@ noremap <Leader>p :!clear && prove -l %<CR>
 
 au BufReadPost *.ep set syntax=html
 
-" Highlight when I go past 80 characters
+" Highlight *just* the 80th character when I exceed 80 characters
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v./
+call matchadd('OverLength', '\%81v.', 100)
 
 " Highlight trailing whitespace
-2match ErrorMsg '\s\+$'
+call matchadd('ErrorMsg', '\s\+$', 100)
