@@ -17,6 +17,7 @@ let g:Powerline_symbols='fancy'
 
 set encoding=utf-8
 let mapleader = ","
+nnoremap ; :
 
 set nocompatible                " get out of horrible vi-compatible mode
 filetype indent on              " detect the type of file and load indent files
