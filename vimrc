@@ -70,9 +70,9 @@ nnoremap <Leader>wa :%s/\s\+$//<CR>
 
 " Custom mappings
 " ------------------------------------------------------------------------------
-noremap <Leader>t :!perltidy<CR>
-noremap <Leader>s :!sort<CR>
-noremap <Leader>p :!clear && prove -l %<CR>
+nnoremap <Leader>p :!clear && prove -l %<CR>
+nnoremap <Leader>s :!sort<CR>
+nnoremap <Leader>t :!perltidy<CR>
 
 " Highlighting
 " ------------------------------------------------------------------------------
