@@ -30,6 +30,8 @@ set number                      " display line numbers
 set ruler                       " show status bar with current file info
 set scrolloff=5                 " number of context lines above and below cursor
 set showmatch matchtime=4       " show matching brackets for 4 seconds
+set splitbelow                  " more natural split behaviour
+set splitright
 
 " Super fancy status lines
 let g:Powerline_symbols='fancy' " See https://github.com/Lokaltog/vim-powerline
