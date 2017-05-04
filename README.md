@@ -16,5 +16,9 @@ ln -s ~/.vim/vimrc ~/.vimrc
 ```
 
 # References
-- [Vim tips and tricks](https://www.cs.swarthmore.edu/help/vim/home.html)
+* [tmux and vim](https://blog.bugsnag.com/tmux-and-vim/) productivity gains
+    shortcuts to move effortlessly between vim and tmux splits and panes, using
+    the vimux plugin and more.
+* [Using tab pages](http://vim.wikia.com/wiki/Using_tab_pages)
+* [Vim tips and tricks](https://www.cs.swarthmore.edu/help/vim/home.html)
     contains useful tips on reformatting text.
