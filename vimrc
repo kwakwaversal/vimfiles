@@ -1,7 +1,7 @@
 " vim: set ts=2 sw=2 et :
 
-" Paul R: http://sprunge.us/KNCd
-" Steven H: https://github.com/shumphrey/vimrc
+let mapleader = " "
+nnoremap ; :
 
 if !exists("g:syntax_on")
   syntax enable
@@ -9,15 +9,10 @@ endif
 
 execute pathogen#infect()
 
-" See https://github.com/Lokaltog/vim-powerline
-let g:Powerline_symbols='fancy'
-
 " General
 " ------------------------------------------------------------------------------
 
 set encoding=utf-8
-let mapleader = ","
-nnoremap ; :
 
 set nocompatible                " get out of horrible vi-compatible mode
 filetype indent on              " detect the type of file and load indent files
@@ -37,6 +32,7 @@ set scrolloff=5                 " number of context lines above and below cursor
 set showmatch matchtime=4       " show matching brackets for 4 seconds
 
 " Super fancy status lines
+let g:Powerline_symbols='fancy' " See https://github.com/Lokaltog/vim-powerline
 set laststatus=2                " always show the status line
 set statusline=%2*%n:%0*%f\ %2*%m\ %1*%h%r%=%{fugitive#statusline()}[%{&fileformat}\ %{&encoding}\ %{strlen(&ft)?&ft:'none'}]\ 0x%B\ %12.(%c:%l/%L%)
 
@@ -94,3 +90,8 @@ call matchadd('OverLength', '\%81v.', 100)
 
 " Highlight trailing whitespace
 call matchadd('ErrorMsg', '\s\+$', 100)
+
+" References
+" ------------------------------------------------------------------------------
+" Paul R: http://sprunge.us/KNCd
+" Steven H: https://github.com/shumphrey/vimrc
