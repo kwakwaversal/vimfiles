@@ -11,8 +11,16 @@ git clone --recursive git@github.com:kwakwaversal/vimfiles.git ~/.vim
 
 Set up a symbolic link to this repository's `vimrc` file.
 
-```sh
+```bash
 ln -s ~/.vim/vimrc ~/.vimrc
+```
+
+If a vim plugin has been added after you cloned this repository, you need to
+reinitialise the git submodules and update them.
+
+```bash
+git submodule init
+git submodule update
 ```
 
 # References
