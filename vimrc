@@ -95,3 +95,4 @@ call matchadd('ErrorMsg', '\s\+$', 100)
 " ------------------------------------------------------------------------------
 " Paul R: http://sprunge.us/KNCd
 " Steven H: https://github.com/shumphrey/vimrc
+" Thoughtbot: https://github.com/thoughtbot/dotfiles/blob/master/vimrc
