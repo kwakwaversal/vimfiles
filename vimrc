@@ -69,9 +69,17 @@ colorscheme solarized
 nnoremap <Leader>wc :%s/\s\+$//c<CR>
 nnoremap <Leader>wa :%s/\s\+$//<CR>
 
+" vimmux - https://github.com/benmills/vimux
+" ------------------------------------------------------------------------------
+map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vz :VimuxZoomRunner<CR>
+map <Leader>p :call VimuxRunCommand("clear; prove -l " . bufname("%"))<CR>
+
 " Custom mappings
 " ------------------------------------------------------------------------------
-noremap <Leader>p :!clear && prove -l %<CR>
+" noremap <Leader>p :!clear && prove -l %<CR>
 noremap <Leader>s :!sort<CR>
 noremap <Leader>t :!perltidy<CR>
 
