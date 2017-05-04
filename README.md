@@ -16,6 +16,7 @@ ln -s ~/.vim/vimrc ~/.vimrc
 ```
 
 # References
+* [Faster and more natural splits](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
 * [tmux and vim](https://blog.bugsnag.com/tmux-and-vim/) productivity gains
     shortcuts to move effortlessly between vim and tmux splits and panes, using
     the vimux plugin and more.
