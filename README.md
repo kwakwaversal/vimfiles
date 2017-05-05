@@ -6,7 +6,7 @@ Plugins incorporated with `git submodule`. Use the `--recursive` option when
 cloning this repository.
 
 ```bash
-git clone --recursive git@github.com:kwakwaversal/vimfiles.git ~/.vim
+git clone --recursive https://github.com/kwakwaversal/vimfiles.git ~/.vim
 ```
 
 Set up a symbolic link to this repository's `vimrc` file.
