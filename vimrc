@@ -87,6 +87,7 @@ map <Leader>p :call VimuxRunCommand("clear; prove -l " . bufname("%"))<CR>
 " noremap <Leader>p :!clear && prove -l %<CR>
 noremap <Leader>s :!sort<CR>
 noremap <Leader>t :!perltidy<CR>
+noremap <Leader>vrc :source ~/.vimrc<CR>
 
 " Highlighting
 " ------------------------------------------------------------------------------
