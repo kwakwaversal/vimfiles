@@ -23,6 +23,10 @@ git submodule init
 git submodule update
 ```
 
+# Environment
+My environment consists of [Terminator], using the
+[Powerline font][Powerline fonts] `Liberation Mono for Powerline`.
+
 # References
 * [Faster and more natural splits](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
 * [tmux and vim](https://blog.bugsnag.com/tmux-and-vim/) productivity gains
@@ -31,3 +35,6 @@ git submodule update
 * [Using tab pages](http://vim.wikia.com/wiki/Using_tab_pages)
 * [Vim tips and tricks](https://www.cs.swarthmore.edu/help/vim/home.html)
     contains useful tips on reformatting text.
+
+[Terminator]: https://gnometerminator.blogspot.co.uk/p/introduction.html
+[Powerline fonts]: https://github.com/powerline/fonts
