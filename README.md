@@ -27,6 +27,11 @@ git submodule update
 My environment consists of [Terminator], using the
 [Powerline font][Powerline fonts] `Liberation Mono for Powerline`.
 
+# Vim plugins
+[Pathogen] is used as the plugin manager of choice.
+
+* [vim-tmux](https://github.com/junegunn/fzf.vim#commands)
+
 # References
 * [Faster and more natural splits](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
 * [tmux and vim](https://blog.bugsnag.com/tmux-and-vim/) productivity gains
@@ -36,5 +41,6 @@ My environment consists of [Terminator], using the
 * [Vim tips and tricks](https://www.cs.swarthmore.edu/help/vim/home.html)
     contains useful tips on reformatting text.
 
-[Terminator]: https://gnometerminator.blogspot.co.uk/p/introduction.html
+[Pathogen]: https://github.com/tpope/vim-pathogen
 [Powerline fonts]: https://github.com/powerline/fonts
+[Terminator]: https://gnometerminator.blogspot.co.uk/p/introduction.html
