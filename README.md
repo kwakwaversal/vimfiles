@@ -19,8 +19,7 @@ If a vim plugin has been added after you cloned this repository, you need to
 reinitialise the git submodules and update them.
 
 ```bash
-git submodule init
-git submodule update
+git submodule update --init
 ```
 
 # Environment
