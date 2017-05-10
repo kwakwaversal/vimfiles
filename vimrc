@@ -119,5 +119,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " References
 " ------------------------------------------------------------------------------
 " Paul R: http://sprunge.us/KNCd
+" Sensible: https://github.com/tpope/vim-sensible/blob/master/plugin/sensible.vim
 " Steven H: https://github.com/shumphrey/vimrc
 " Thoughtbot: https://github.com/thoughtbot/dotfiles/blob/master/vimrc
