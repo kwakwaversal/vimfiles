@@ -23,6 +23,7 @@ set tabstop=4 shiftwidth=4 expandtab
 
 set autoindent                  " copy indent of current line when starting new
 set cursorline                  " highlight screenline of the cursor
+set formatoptions+=j            " Delete comment character when joining commented lines
 set ignorecase smartcase        " case insensitive searching by default
 set incsearch                   " incremental search-as-you-type
 set modeline                    " override vim options per file
