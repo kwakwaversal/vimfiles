@@ -1,2 +1,3 @@
-syntax on
+syntax enable
+set nocompatible
 set syntax=dbout
