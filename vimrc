@@ -31,6 +31,8 @@ set number                      " display line numbers
 set ruler                       " show status bar with current file info
 set scrolloff=5                 " number of context lines above and below cursor
 set showmatch matchtime=4       " show matching brackets for 4 seconds
+set smartindent                 " does the right thing (mostly) in programs
+set smarttab                    " some tab voodoo
 set splitbelow                  " more natural split behaviour
 set splitright
 
