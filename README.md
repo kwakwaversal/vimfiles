@@ -9,7 +9,9 @@ cloning this repository.
 git clone --recursive https://github.com/kwakwaversal/vimfiles.git ~/.vim
 ```
 
-Set up a symbolic link to this repository's `vimrc` file.
+Set up a symbolic link to this repository's `vimrc` file if using an older
+version of vim. (Newer versions pick up the existence of the `.vim` folder and
+contained `vimrc` file.)
 
 ```bash
 ln -s ~/.vim/vimrc ~/.vimrc
