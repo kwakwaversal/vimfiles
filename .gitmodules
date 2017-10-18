@@ -24,4 +24,7 @@
 	url = https://github.com/benmills/vimux.git
 [submodule "bundle/vim-fzf"]
 	path = bundle/vim-fzf
-	url = https://github.com/junegunn/fzf.vim.git
+    url = https://github.com/junegunn/fzf.vim.git
+[submodule "bundle/vim-fugitive-gitlab"]
+	path = bundle/vim-fugitive-gitlab
+	url = https://github.com/shumphrey/fugitive-gitlab.vim.git
