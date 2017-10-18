@@ -120,6 +120,12 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+" Source local vimrc if it exists
+" -----------------------------------------------------------------------------
+if filereadable(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+
 " References
 " ------------------------------------------------------------------------------
 " Paul R: http://sprunge.us/KNCd
