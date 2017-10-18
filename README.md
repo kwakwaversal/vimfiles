@@ -31,7 +31,7 @@ My environment consists of [Terminator], using the
 # Vim plugins
 [Pathogen] is used as the plugin manager of choice.
 
-* [vim-tmux](https://github.com/junegunn/fzf.vim#commands)
+* [vim-fzf](https://github.com/junegunn/fzf.vim#commands)
 
 # References
 * [Faster and more natural splits](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
