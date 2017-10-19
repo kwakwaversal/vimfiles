@@ -33,6 +33,24 @@ My environment consists of [Terminator], using the
 
 * [vim-fzf](https://github.com/junegunn/fzf.vim#commands)
 
+## Adding a new plugin
+The Vim plugins are managed using `git submodule`.
+
+```bash
+git submodule add https://github.com/vim-perl/vim-perl.git bundle/vim-perl
+```
+
+## Updating plugins
+In the master branch, recursively update all plugins to the latest version.
+
+```bash
+git submodule update --init --recursive
+git submodule foreach --recursive git fetch
+```
+
+See [https://stackoverflow.com/questions/10168449/git-update-submodule-recursive]
+for more information.
+
 # References
 * [Faster and more natural splits](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
 * [tmux and vim](https://blog.bugsnag.com/tmux-and-vim/) productivity gains
