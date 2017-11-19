@@ -84,14 +84,14 @@ map <Leader>vi :VimuxInspectRunner<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vz :VimuxZoomRunner<CR>
-map <Leader>p :call VimuxRunCommand("clear; prove -l " . bufname("%"))<CR>
+map <Leader>p  :call VimuxRunCommand("clear; prove -l " . bufname("%"))<CR>
 
 " Custom mappings
 " ------------------------------------------------------------------------------
-" noremap <Leader>p :!clear && prove -l %<CR>
-noremap <Leader>s :!sort<CR>
-noremap <Leader>t :!perltidy<CR>
-noremap <Leader>vrc :source ~/.vimrc<CR>
+nnoremap <Leader>s   :!sort<CR>
+nnoremap <Leader>t   :!perltidy<CR>
+nnoremap <Leader>vrc :source ~/.vimrc<CR>
+nnoremap <Leader>w   :w<CR>
 
 nmap <Leader><Leader> V
 vmap v <Plug>(expand_region_expand)
