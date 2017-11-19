@@ -115,7 +115,10 @@ call matchadd('ErrorMsg', '\s\+$', 100)
 " -----------------------------------------------------------------------------
 set rtp+=~/.fzf
 
-noremap <Leader>f :FZF<CR>
+noremap <Leader>f  :FZF<CR>
+noremap <Leader>b  :Buffers<CR>
+noremap <Leader>bl :BLines<CR>
+noremap <Leader>l  :Lines<CR>
 
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
