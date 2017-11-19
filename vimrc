@@ -93,6 +93,10 @@ noremap <Leader>s :!sort<CR>
 noremap <Leader>t :!perltidy<CR>
 noremap <Leader>vrc :source ~/.vimrc<CR>
 
+nmap <Leader><Leader> V
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
 " Highlighting
 " ------------------------------------------------------------------------------
 
