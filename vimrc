@@ -38,9 +38,11 @@ set splitbelow                  " more natural split behaviour
 set splitright
 
 " Super fancy status lines
-let g:Powerline_symbols='fancy' " See https://github.com/Lokaltog/vim-powerline
 set laststatus=2                " always show the status line
-set statusline=%2*%n:%0*%f\ %2*%m\ %1*%h%r%=%{fugitive#statusline()}[%{&fileformat}\ %{&encoding}\ %{strlen(&ft)?&ft:'none'}]\ 0x%B\ %12.(%c:%l/%L%)
+let g:airline_theme='powerlineish'
+" let g:airline_left_sep=''
+" let g:airline_right_sep=''
+" let g:airline_section_z=''
 
 " Theme / colours
 " ------------------------------------------------------------------------------

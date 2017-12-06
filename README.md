@@ -48,6 +48,13 @@ git submodule update --init --recursive
 git submodule foreach --recursive git fetch
 ```
 
+## Removing plugins
+
+```bash
+git submodule deinit -f -- bundle/vim-powerline
+git rm --cached bundle/vim-powerline
+```
+
 See [https://stackoverflow.com/questions/10168449/git-update-submodule-recursive]
 for more information.
 
