@@ -60,10 +60,12 @@ for more information.
 
 # References
 * [Faster and more natural splits](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
+* [How to boost your vim productivity](https://github.com/sheerun/blog/blob/master/_posts/2014-03-21-how-to-boost-your-vim-productivity.markdown)
 * [tmux and vim](https://blog.bugsnag.com/tmux-and-vim/) productivity gains
     shortcuts to move effortlessly between vim and tmux splits and panes, using
     the vimux plugin and more.
 * [Using tab pages](http://vim.wikia.com/wiki/Using_tab_pages)
+* [Vim genius](http://www.vimgenius.com/) online flashcard-style vim game
 * [Vim tips and tricks](https://www.cs.swarthmore.edu/help/vim/home.html)
     contains useful tips on reformatting text.
 
