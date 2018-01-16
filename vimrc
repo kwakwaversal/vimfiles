@@ -94,7 +94,7 @@ noremap <Leader>s   :!sort<CR>
 noremap <Leader>t   :!perltidy<CR>
 noremap <Leader>vrc :source ~/.vimrc<CR>
 
-nnoremap <Leader>num :set relativenumber! number!<CR>
+nnoremap <Leader>num :set relativenumber! number! <bar> :GitGutterToggle<CR>
 nnoremap <Leader>w   :w<CR>
 
 nmap <Leader><Leader> V
