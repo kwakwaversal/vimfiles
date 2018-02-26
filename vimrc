@@ -99,6 +99,10 @@ noremap <Leader>vrc  :source ~/.vimrc<CR>
 nnoremap <Leader>num :set relativenumber! number! <bar> :GitGutterToggle<CR>
 nnoremap <Leader>w   :w<CR>
 
+noremap :Q :q        " remap common typos
+noremap :W :w        " especially this one
+noremap :X :x        "
+
 nmap <Leader><Leader> V
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
