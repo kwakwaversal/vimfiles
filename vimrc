@@ -28,7 +28,6 @@ set ignorecase smartcase        " case insensitive searching by default
 set incsearch                   " incremental search-as-you-type
 set modeline                    " override vim options per file
 set number                      " display line numbers
-set paste                       " default to paste mode
 set relativenumber              " line numbers relative to current cursor position
 set ruler                       " show status bar with current file info
 set scrolloff=5                 " number of context lines above and below cursor
