@@ -93,7 +93,7 @@ map <Leader>p  :call VimuxRunCommand("clear; prove -l " . bufname("%"))<CR>
 noremap <Leader>s    :!sort<CR>
 noremap <Leader>t    :!perltidy<CR>
 noremap <Leader>uuid :exe 'norm i' . system("echo -n $(uuidgen -r)")<CR>
-noremap <Leader>vrc  :source ~/.vimrc<CR>
+noremap <Leader>vrc  :source ~/vim/vimrc<CR>
 
 nnoremap <Leader>num :set relativenumber! number! <bar> :GitGutterToggle<CR>
 nnoremap <Leader>w   :w<CR>
