@@ -118,7 +118,7 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 call matchadd('OverLength', '\%81v.', 100)
 
 " Highlight trailing whitespace
-call matchadd('ErrorMsg', '\s\+$', 100)
+" call matchadd('ErrorMsg', '\s\+$', 100)
 
 " FZF - https://github.com/junegunn/fzf.vim
 " -----------------------------------------------------------------------------
