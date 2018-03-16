@@ -110,8 +110,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " ------------------------------------------------------------------------------
 
 au BufReadPost *.ep set syntax=html
-au BufReadPost *.tt,*.tt2 set syntax=tt2html
-au BufReadPost cpanfile set syntax=perl
 
 " Highlight *just* the 80th character when I exceed 80 characters
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
