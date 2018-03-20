@@ -87,6 +87,7 @@ map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vz :VimuxZoomRunner<CR>
 map <Leader>p  :call VimuxRunCommand("clear; prove -l " . bufname("%"))<CR>
+map <Leader>pd :call VimuxRunCommand("clear; perldoc " . bufname("%"))<CR>
 
 " Custom mappings
 " ------------------------------------------------------------------------------
