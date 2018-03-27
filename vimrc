@@ -59,26 +59,8 @@ colorscheme solarized
 " Spaces
 " ------------------------------------------------------------------------------
 
-" function! TrimWhiteSpace()
-"     %s/\s\+$//e
-" endfunction
-
-" nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
-
-" autocmd FileWritePre    * :call TrimWhiteSpace()
-" autocmd FileAppendPre   * :call TrimWhiteSpace()
-" autocmd FilterWritePre  * :call TrimWhiteSpace()
-" autocmd BufWritePre     * :call TrimWhiteSpace()
-
 nnoremap <Leader>wc :%s/\s\+$//c<CR>
 nnoremap <Leader>wa :%s/\s\+$//<CR>
-
-" Tabs (using Leader as can't get CTRL+TAB to work)
-" ------------------------------------------------------------------------------
-" au TabLeave * let g:lasttab = tabpagenr()
-" noremap <Leader><tab> :exe "tabn ".g:lasttab<cr>
-" nnoremap <silent> <C-Tab> :exe "tabn ".g:lasttab<cr>
-" vnoremap <silent> <C-Tab> :exe "tabn ".g:lasttab<cr>
 
 " vimmux - https://github.com/benmills/vimux
 " ------------------------------------------------------------------------------
