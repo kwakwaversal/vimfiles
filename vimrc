@@ -62,6 +62,22 @@ colorscheme solarized
 nnoremap <Leader>wc :%s/\s\+$//c<CR>
 nnoremap <Leader>wa :%s/\s\+$//<CR>
 
+" ack.vim - https://github.com/mileszs/ack.vim
+" ------------------------------------------------------------------------------
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+
+nmap <Esc>k :Ack! "\b<cword>\b" <CR>
+
+" common(ish) macros
+" ------------------------------------------------------------------------------
+nmap \x :cclose<CR>
+nmap \p :set paste!<CR>
+
+" I think this toggles between the position of the last buffer
+nmap <C-e> :e#<CR>
+
 " vimmux - https://github.com/benmills/vimux
 " ------------------------------------------------------------------------------
 map <Leader>vi :VimuxInspectRunner<CR>
@@ -104,8 +120,9 @@ call matchadd('OverLength', '\%81v.', 100)
 " -----------------------------------------------------------------------------
 set rtp+=~/.fzf
 
+noremap <Leader>a  :Ag<CR>
 noremap <Leader>f  :FZF<CR>
-noremap <Leader>b  :Buffers<CR>
+noremap <Leader>bb :Buffers<CR>
 noremap <Leader>bl :BLines<CR>
 noremap <Leader>l  :Lines<CR>
 
@@ -128,5 +145,6 @@ endif
 " ------------------------------------------------------------------------------
 " Paul R: http://sprunge.us/KNCd
 " Sensible: https://github.com/tpope/vim-sensible/blob/master/plugin/sensible.vim
+" Statico: https://github.com/statico/dotfiles/blob/master/.vim/vimrc
 " Steven H: https://github.com/shumphrey/vimrc
 " Thoughtbot: https://github.com/thoughtbot/dotfiles/blob/master/vimrc
