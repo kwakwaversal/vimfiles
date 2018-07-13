@@ -40,6 +40,15 @@ The Vim plugins are managed using `git submodule`.
 git submodule add https://github.com/vim-perl/vim-perl.git bundle/vim-perl
 ```
 
+## Initializing plugins
+When using these `vimfiles` from multiple machines, git submodules might be
+added in a commit from another machine so might need to be initialized.
+
+```bash
+git submodule init
+git submodule update
+```
+
 ## Updating plugins
 In the master branch, recursively update all plugins to the latest version.
 
