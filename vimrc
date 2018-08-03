@@ -104,6 +104,9 @@ nmap <Leader><Leader> V
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+vmap    <Leader>= mz gq `z<Left>     " format comment in visual mode
+noremap <Leader>= mz vip gq `z<Left> " format comment paragraph in normal mode
+
 " Highlighting
 " ------------------------------------------------------------------------------
 

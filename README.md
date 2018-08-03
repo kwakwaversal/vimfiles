@@ -2,8 +2,8 @@
 My ~/.vim directory. All hail vim.
 
 # Installation
-Plugins incorporated with `git submodule`. Use the `--recursive` option when
-cloning this repository.
+Plugins are incorporated using `git submodule`. Use the `--recursive` option
+when cloning this repository to automatically download and install them.
 
 ```bash
 git clone --recursive https://github.com/kwakwaversal/vimfiles.git ~/.vim
@@ -25,8 +25,8 @@ git submodule update --init
 ```
 
 # Environment
-My environment consists of [Terminator], using the
-[Powerline font][Powerline fonts] `Liberation Mono for Powerline`.
+My environment consists of [Terminator], using the [Powerline font][Powerline
+fonts] `Liberation Mono for Powerline`.
 
 # Vim plugins
 [Pathogen] is used as the plugin manager of choice.
