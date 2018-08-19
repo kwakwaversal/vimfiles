@@ -1,9 +1,9 @@
 [submodule "bundle/solarized"]
 	path = bundle/solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/vim-commentary"]
 	path = bundle/vim-commentary
-	url = https://github.com/tpope/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -43,7 +43,7 @@
 	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "bundle/vim-gitgutter"]
 	path = bundle/vim-gitgutter
-	url = git://github.com/airblade/vim-gitgutter.git
+	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "bundle/vim-cucumber"]
 	path = bundle/vim-cucumber
 	url = https://github.com/tpope/vim-cucumber.git

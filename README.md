@@ -2,8 +2,9 @@
 My ~/.vim directory. All hail vim.
 
 # Installation
-Plugins are incorporated using `git submodule`. Use the `--recursive` option
-when cloning this repository to automatically download and install them.
+Plugins are managed using the [Pathogen] plugin manager and tracked using `git
+submodule` . Use the `--recursive` option when cloning this repository to
+automatically download and install them.
 
 ```bash
 git clone --recursive https://github.com/kwakwaversal/vimfiles.git ~/.vim
@@ -31,7 +32,25 @@ fonts] `Liberation Mono for Powerline`.
 # Vim plugins
 [Pathogen] is used as the plugin manager of choice.
 
-* [vim-fzf](https://github.com/junegunn/fzf.vim#commands)
+* [ack-vim](https://github.com/mileszs/ack.vim) searching files
+* [salt-vim](https://github.com/saltstack/salt-vim) working on [SaltStack] files
+* [solarized](https://github.com/altercation/vim-colors-solarized) colour scheme
+* [vim-airline](https://github.com/vim-airline/vim-airline) status/tabline
+* [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) airline themes
+* [vim-commentary](https://github.com/tpope/vim-commentary) comment stuff out
+* [vim-cucumber](https://github.com/tpope/vim-cucumber) cucumber indentation, highlighting etc.
+* [vim-expand-region](https://github.com/terryma/vim-expand-region) quickly expand visual selection
+* [vim-fugitive-gitlab](https://github.com/shumphrey/fugitive-gitlab.vim) fugitive+gitlab integration
+* [vim-fugitive](https://github.com/tpope/vim-fugitive) git wrapper
+* [vim-fzf](https://github.com/junegunn/fzf.vim#commands) finding files
+* [vim-gitgutter](https://github.com/airblade/vim-gitgutter) git line diffs in the "gutter"
+* [vim-perl](https://github.com/vim-perl/vim-perl) perl 5 and 6 support
+* [vim-repeat](https://github.com/tpope/vim-repeat) add vim repeat feature to extra plugins (e.g., surround)
+* [vim-surround](https://github.com/tpope/vim-surround) manipulate surroundings in pairs
+* [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) navigate between vim and tmux splits
+* [vim-typescript](https://github.com/leafgarland/typescript-vim) syntax files for typescript
+* [vim-unimpaired](https://github.com/tpope/vim-unimpaired) helpful mappings
+* [vimux](https://github.com/benmills/vimux) interact with tmux from vim
 
 ## Adding a new plugin
 The Vim plugins are managed using `git submodule`.
@@ -80,4 +99,5 @@ for more information.
 
 [Pathogen]: https://github.com/tpope/vim-pathogen
 [Powerline fonts]: https://github.com/powerline/fonts
+[SaltStack]: https://saltstack.com/
 [Terminator]: https://gnometerminator.blogspot.co.uk/p/introduction.html
