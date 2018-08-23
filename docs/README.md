@@ -11,8 +11,8 @@ for different vim commands.
 I have tried to use vim key notation in these docs. `:help key-notation`.
 
 # Commands
-* [Manipulation](playground/manipulation.md)
-* [Movement](playground/movement.md)
+* [Manipulation](manipulation.md)
+* [Movement](movement.md)
 
 # Help
 Vim's help is pretty good. The shortcuts I have found most useful when

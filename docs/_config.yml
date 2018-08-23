@@ -1,0 +1,6 @@
+theme: jekyll-theme-leap-day
+
+title: vimfiles!
+description: My ~/.vim directory. All hail vim.
+
+github: [metadata]
