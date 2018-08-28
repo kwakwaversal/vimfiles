@@ -53,6 +53,7 @@ else
 endif
 
 let g:solarized_termcolors=256
+let g:solarized_visibility='high'
 set t_Co=256
 colorscheme solarized
 
