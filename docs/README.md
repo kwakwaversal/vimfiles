@@ -13,6 +13,7 @@ I have tried to use vim key notation in these docs. `:help key-notation`.
 # Commands
 * [Manipulation](manipulation.md)
 * [Movement](movement.md)
+* [Folding](https://gist.github.com/lestoni/8c74da455cce3d36eb68)
 
 # Help
 Vim's help is pretty good. The shortcuts I have found most useful when
