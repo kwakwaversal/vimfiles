@@ -18,8 +18,7 @@ set nocompatible                " get out of horrible vi-compatible mode
 filetype indent on              " detect the type of file and load indent files
 filetype plugin on              " load filetype plugins
 
-" default to 4 spaces (damn you @shumphrey)
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=2 shiftwidth=2 expandtab " default to 2 spaces
 
 set autoindent                  " copy indent of current line when starting new
 set cursorline                  " highlight screenline of the cursor
