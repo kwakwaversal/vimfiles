@@ -39,6 +39,7 @@ fonts] `Liberation Mono for Powerline`.
 * [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) airline themes
 * [vim-commentary](https://github.com/tpope/vim-commentary) comment stuff out
 * [vim-cucumber](https://github.com/tpope/vim-cucumber) cucumber indentation, highlighting etc.
+* [vim-dockerfile](https://github.com/ekalinin/Dockerfile.vim) syntax highlighting for Dockerfiles
 * [vim-expand-region](https://github.com/terryma/vim-expand-region) quickly expand visual selection
 * [vim-fugitive-gitlab](https://github.com/shumphrey/fugitive-gitlab.vim) fugitive+gitlab integration
 * [vim-fugitive](https://github.com/tpope/vim-fugitive) git wrapper
