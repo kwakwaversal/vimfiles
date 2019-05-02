@@ -75,6 +75,7 @@ In the master branch, recursively update all plugins to the latest version.
 ```bash
 git submodule update --init --recursive
 git submodule foreach --recursive git fetch
+git submodule foreach git pull --ff-only origin master
 ```
 
 ## Removing plugins
