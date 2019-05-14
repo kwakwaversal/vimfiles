@@ -43,6 +43,7 @@ fonts] `Liberation Mono for Powerline`.
 * [vim-fugitive-gitlab](https://github.com/shumphrey/fugitive-gitlab.vim) fugitive+gitlab integration
 * [vim-fugitive](https://github.com/tpope/vim-fugitive) git wrapper
 * [vim-fzf](https://github.com/junegunn/fzf.vim#commands) finding files
+* [vim-javascript](https://github.com/pangloss/vim-javascript) Vastly improved Javascript indentation and syntax support in Vim
 * [vim-gitgutter](https://github.com/airblade/vim-gitgutter) git line diffs in the "gutter"
 * [vim-perl](https://github.com/vim-perl/vim-perl) perl 5 and 6 support
 * [vim-repeat](https://github.com/tpope/vim-repeat) add vim repeat feature to extra plugins (e.g., surround)
