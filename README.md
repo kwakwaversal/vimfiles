@@ -25,6 +25,21 @@ reinitialise the git submodules and update them.
 git submodule update --init
 ```
 
+# Updating vim
+
+Update/install the latest version of vim (optionally with clipboard support).
+
+```console
+$ apt-get install libx11-dev libxt-dev
+$ git clone git@github.com:vim/vim
+$ ./configure --with-features=huge --with-x
+$ make -j8
+$ make install
+```
+
+Alternatively see https://github.com/jjangsangy/Dotfiles/wiki/Debian-Vim for
+more complete instructions.
+
 # Environment
 My environment consists of [Terminator], using the [Powerline font][Powerline
 fonts] `Liberation Mono for Powerline`.
