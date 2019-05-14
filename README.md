@@ -33,7 +33,6 @@ fonts] `Liberation Mono for Powerline`.
 [Pathogen] is used as the plugin manager of choice.
 
 * [ack-vim](https://github.com/mileszs/ack.vim) searching files
-* [salt-vim](https://github.com/saltstack/salt-vim) working on [SaltStack] files
 * [solarized](https://github.com/altercation/vim-colors-solarized) colour scheme
 * [vim-airline](https://github.com/vim-airline/vim-airline) status/tabline
 * [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) airline themes
@@ -52,6 +51,10 @@ fonts] `Liberation Mono for Powerline`.
 * [vim-typescript](https://github.com/leafgarland/typescript-vim) syntax files for typescript
 * [vim-unimpaired](https://github.com/tpope/vim-unimpaired) helpful mappings
 * [vimux](https://github.com/benmills/vimux) interact with tmux from vim
+
+Removed
+
+* [salt-vim](https://github.com/saltstack/salt-vim) working on [SaltStack] files
 
 ## Adding a new plugin
 The Vim plugins are managed using `git submodule`.
