@@ -35,6 +35,7 @@ set smartindent                 " does the right thing (mostly) in programs
 set smarttab                    " some tab voodoo
 set splitbelow                  " more natural split behaviour
 set splitright
+set updatetime=100              " write more often to swap (better GitGutter response)
 
 " Super fancy status lines
 set laststatus=2                " always show the status line
