@@ -25,6 +25,16 @@ reinitialise the git submodules and update them.
 git submodule update --init
 ```
 
+## [coc.vim](https://github.com/neoclide/coc.nvim)
+
+The plugin coc.vim requires additional configuration. The below is entered
+directly from within `vim` itself.
+
+```
+:call coc#util#install()
+:CocInstall coc-tsserver coc-eslint coc-json coc-prettier
+```
+
 # Updating vim
 
 Update/install the latest version of vim (optionally with clipboard support).
@@ -109,6 +119,7 @@ for more information.
 
 # References
 * [Faster and more natural splits](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
+* [Guide to modern web development with neovim](https://medium.freecodecamp.org/a-guide-to-modern-web-development-with-neo-vim-333f7efbf8e2)
 * [How to boost your vim productivity](https://github.com/sheerun/blog/blob/master/_posts/2014-03-21-how-to-boost-your-vim-productivity.markdown)
 * [tmux and vim](https://blog.bugsnag.com/tmux-and-vim/) productivity gains
     shortcuts to move effortlessly between vim and tmux splits and panes, using
