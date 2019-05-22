@@ -21,6 +21,7 @@ filetype plugin on              " load filetype plugins
 set tabstop=2 shiftwidth=2 expandtab " default to 2 spaces
 
 set autoindent                  " copy indent of current line when starting new
+set backspace=2                 " allow backspace over autoindent, line breaks and start of insert
 set cursorline                  " highlight screenline of the cursor
 set formatoptions+=j            " Delete comment character when joining commented lines
 set ignorecase smartcase        " case insensitive searching by default
