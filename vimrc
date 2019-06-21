@@ -112,6 +112,7 @@ noremap <Leader>= mz vip gq `z<Left> " format comment paragraph in normal mode
 " ------------------------------------------------------------------------------
 
 au BufReadPost *.ep set syntax=html
+let g:sql_type_default = 'pgsql'
 
 " Highlight *just* the 80th character when I exceed 80 characters
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
