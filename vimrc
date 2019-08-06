@@ -47,7 +47,7 @@ let g:airline_theme='powerlineish'
 
 set path+=**                    " fuzzy finding using vanilla vim and `:find`
 set wildmenu                    " adds menu with multple `:find` or `:b` results
-command! MakeTags !ctags -R .   " command macro to make ctags
+command! MakeTags !ctags -R .
 nnoremap ,js :-1read $HOME/.vim/.skeleton.js<CR>
 
 " https://shapeshed.com/vim-netrw/#nerdtree-like-setup
