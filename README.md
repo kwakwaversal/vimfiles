@@ -41,8 +41,8 @@ Update/install the latest version of vim (optionally with clipboard support).
 
 ```console
 $ apt-get install libx11-dev libxt-dev
-$ git clone git@github.com:vim/vim
-$ ./configure --with-features=huge --with-x
+$ git clone --depth 1 https://github.com/vim/vim
+$ ./configure --enable-gui=no --enable-perlinterp --enable-pythoninterp=yes --with-features=huge --with-x
 $ make -j8
 $ make install
 ```
