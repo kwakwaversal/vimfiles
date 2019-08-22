@@ -11,21 +11,21 @@ endsnippet
 
 snippet fk "Foreign key (cascade)" b
 ALTER TABLE ONLY ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table" `}
-	ADD CONSTRAINT ${1/([^.]+)\.?(.*)/$2/}_${2/(.*)/$1/}_fkey
+	ADD CONSTRAINT ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_fkey
 		FOREIGN KEY ($2) REFERENCES ${3:schema.other_table}(${4:id})
 			ON UPDATE $0CASCADE ON DELETE CASCADE;
 
 endsnippet
 
 snippet idx "Index" b
-CREATE INDEX ${1/([^.]+)\.?(.*)/$2/}_${2/(.*)/$1/}_idx ON ${1:schema.table}
+CREATE INDEX ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_idx ON ${1:schema.table}
 	USING btree (${2:column});
 
 endsnippet
 
 snippet pk "Primary key" b
 ALTER TABLE ONLY ${1:schema.table}
-	ADD CONSTRAINT ${1/([^.]+)\.?(.*)/$2/}_${2/(.*)/$1/}_pkey PRIMARY KEY (${2:id});
+	ADD CONSTRAINT ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_pkey PRIMARY KEY (${2:id});
 
 endsnippet
 
