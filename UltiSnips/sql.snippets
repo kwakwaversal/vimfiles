@@ -45,6 +45,34 @@ endsnippet
 
 # GENERAL
 
+snippet dft "Create function trigger" b
+CREATE OR REPLACE FUNCTION ${1:schema.function_name}()
+	RETURNS trigger AS
+$BODY$
+-- This is a good place to put a brief comment about this trigger function.
+DECLARE
+	foo RECORD;
+	some_table schema.table_name%rowtype;
+
+BEGIN
+	IF TG_OP = 'INSERT' THEN
+	$0
+	ELSIF TG_OP = 'UPDATE' THEN
+
+	END IF;
+END;
+$BODY$ LANGUAGE ${2:plpgsql};
+
+endsnippet
+
+snippet dfr "Delete function" b
+DROP FUNCTION ${1:schema.function_name}();
+endsnippet
+
+snippet dfv "Verify function" b
+SELECT has_function_privilege('${1:schema.function_name}(${2:attrs})', 'execute');
+endsnippet
+
 snippet fk "Foreign key (cascade)" b
 ALTER TABLE ONLY ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table" `}
 	ADD CONSTRAINT ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_fkey
@@ -79,13 +107,21 @@ endsnippet
 
 snippet table "Create a table" b
 create table ${1:schema.table} (
-	id uuid default public.gen_random_id() not null,
+	id uuid default public.gen_random_uuid() not null,
 	id uuid default public.uuid_generate_v4() not null,$0
 	created_at timestamp with time zone default CURRENT_TIMESTAMP not null,
 	created_by uuid,
 	updated_at timestamp with time zone default CURRENT_TIMESTAMP not null,
 	updated_by uuid
 );
+endsnippet
+
+snippet tabler "Delete a table (sqitch revert)"
+DROP TABLE ${1:schema.table};
+endsnippet
+
+snippet tablev "Verify a table (sqitch verify)"
+SELECT * FROM ${1:schema.table} WHERE false;
 endsnippet
 
 snippet tr "Trigger (insert or update)" b
