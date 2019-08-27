@@ -29,6 +29,18 @@ ALTER TABLE ONLY ${1:schema.table}
 
 endsnippet
 
+snippet schema "Create schema" b
+CREATE SCHEMA ${1:schemaname};
+endsnippet
+
+snippet schemar "Delete schema (sqitch revert)" b
+DROP SCHEMA ${1:schemaname};
+endsnippet
+
+snippet schemav "Test schema (sqitch verify)"
+SELECT pg_catalog.has_schema_privilege('${1:schemaname}', 'usage');
+endsnippet
+
 # TRIGGERS
 
 snippet tr "Trigger (insert or update)" b
@@ -55,6 +67,12 @@ endsnippet
 
 snippet comf "Comment on function" b
 COMMENT ON FUNCTION ${1:schema.function_name} IS
+'${2:Insert comment here}';
+
+endsnippet
+
+snippet coms "Comment on schema" b
+COMMENT ON SCHEMA ${1:schemaname} IS
 '${2:Insert comment here}';
 
 endsnippet
