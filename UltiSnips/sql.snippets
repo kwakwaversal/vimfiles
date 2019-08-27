@@ -1,13 +1,36 @@
-snippet table "Create a table" b
-create table ${1:schema.table} (
-	id uuid default public.gen_random_id() not null,
-	id uuid default public.uuid_generate_v4() not null,$0
-	created_at timestamp with time zone default CURRENT_TIMESTAMP not null,
-	created_by uuid,
-	updated_at timestamp with time zone default CURRENT_TIMESTAMP not null,
-	updated_by uuid
-);
+# COMMENTS
+
+snippet com "Comment on table" b
+COMMENT ON TABLE ${1:schema.table} IS
+'${2:Insert comment here}';
+
 endsnippet
+
+snippet comc "Comment on column" b
+COMMENT ON COLUMN ${1:schema.table.column} IS
+'${2:Insert comment here}';
+
+endsnippet
+
+snippet comf "Comment on function" b
+COMMENT ON FUNCTION ${1:schema.function_name} IS
+'${2:Insert comment here}';
+
+endsnippet
+
+snippet coms "Comment on schema" b
+COMMENT ON SCHEMA ${1:schemaname} IS
+'${2:Insert comment here}';
+
+endsnippet
+
+snippet comt "Comment on type" b
+COMMENT ON TYPE ${1:schema.type} IS
+'${2:Insert comment here}';
+
+endsnippet
+
+# GENERAL
 
 snippet fk "Foreign key (cascade)" b
 ALTER TABLE ONLY ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table" `}
@@ -41,45 +64,22 @@ snippet schemav "Test schema (sqitch verify)"
 SELECT pg_catalog.has_schema_privilege('${1:schemaname}', 'usage');
 endsnippet
 
-# TRIGGERS
+snippet table "Create a table" b
+create table ${1:schema.table} (
+	id uuid default public.gen_random_id() not null,
+	id uuid default public.uuid_generate_v4() not null,$0
+	created_at timestamp with time zone default CURRENT_TIMESTAMP not null,
+	created_by uuid,
+	updated_at timestamp with time zone default CURRENT_TIMESTAMP not null,
+	updated_by uuid
+);
+endsnippet
 
 snippet tr "Trigger (insert or update)" b
 CREATE TRIGGER ${1/\./_/}_trigger
 	AFTER INSERT OR UPDATE ON ${1:schema.table}
 		FOR EACH ROW
 		EXECUTE PROCEDURE ${2:schema.trigger_function}();
-
-endsnippet
-
-# COMMENTS
-
-snippet com "Comment on table" b
-COMMENT ON TABLE ${1:schema.table} IS
-'${2:Insert comment here}';
-
-endsnippet
-
-snippet comc "Comment on column" b
-COMMENT ON COLUMN ${1:schema.table.column} IS
-'${2:Insert comment here}';
-
-endsnippet
-
-snippet comf "Comment on function" b
-COMMENT ON FUNCTION ${1:schema.function_name} IS
-'${2:Insert comment here}';
-
-endsnippet
-
-snippet coms "Comment on schema" b
-COMMENT ON SCHEMA ${1:schemaname} IS
-'${2:Insert comment here}';
-
-endsnippet
-
-snippet comt "Comment on type" b
-COMMENT ON TYPE ${1:schema.type} IS
-'${2:Insert comment here}';
 
 endsnippet
 
