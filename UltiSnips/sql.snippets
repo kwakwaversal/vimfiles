@@ -1,3 +1,16 @@
+# COLUMNS
+snippet coltz "Column timestamp with time zone"
+${1:column_name} timestamp with time zone ${2:default CURRENT_TIMESTAMP } ${3:not null},
+endsnippet
+
+snippet colt "Column text"
+${1:column_name} text ${2:default '' }${3:not null},
+endsnippet
+
+snippet colu "Column uuid"
+${1:column_name} uuid ${2:default public_gen_random_id() }${3:not null},
+endsnippet
+
 # COMMENTS
 
 snippet com "Comment on table" b
