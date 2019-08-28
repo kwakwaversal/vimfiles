@@ -184,6 +184,13 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
+" Auto commands (included here to take precedence over plugins)
+" -----------------------------------------------------------------------------
+" Explicitly set the Ultisnips syntax for Dockerfile.snippets. When used with
+" Dockerfile.vim (https://github.com/ekalinin/Dockerfile.vim), the `ftdetect`
+" takes priority over Ultisnips' syntax highlighting option.
+autocmd BufNewFile,BufRead Dockerfile.snippets set ft=snippets
+
 " Source local vimrc if it exists
 " ------------------------------------------------------------------------------
 if filereadable(glob("~/.vimrc.local"))
