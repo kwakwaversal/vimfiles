@@ -1,0 +1,52 @@
+snippet cl "console.log" b
+console.log(${1:${VISUAL}});
+endsnippet
+
+snippet try "try, catch" b
+try {
+	$0${VISUAL}
+} catch (error) {
+	console.log(error);
+}
+endsnippet
+
+snippet @fo "@fileoverview Description" b
+/**
+ * @fileoverview ${1:${VISUAL:A description of the file}}$0
+ */
+
+endsnippet
+
+snippet @con "@constructor boilerplate" b
+/**
+ * ${1:${VISUAL:Construct the class.}}
+ * @param args
+ * @param [args.db] {Object} - optional db instance
+ */
+endsnippet
+
+snippet @ex "@example boilerplate"
+@example
+* console.log(${1:true})
+* // expected output: ${2:true}
+
+endsnippet
+
+snippet @exf "@example boilerplate for function"
+@example
+* ${1:instance}.${2:method}($3$0);
+* // expected output: ${4:true}
+
+endsnippet
+
+snippet @p "@param {Type} varname Description"
+@param {${1:Type}} ${2:varname} - ${3:Description}
+endsnippet
+
+snippet @po "@param optional {Type} varname Description"
+@param {${1:Type}} [${2:varname}] - ${3:Description}
+endsnippet
+
+snippet @ret "@return {Type} Description"
+@return {${1:Type}} ${2:Description}
+endsnippet
