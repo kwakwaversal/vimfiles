@@ -1,4 +1,26 @@
+# BOILERPLATE
+
+snippet [pgtap] "pgTAP boilerplate test" b
+BEGIN;
+
+SELECT plan(1);
+/* SELECT * FROM no_plan(); */
+
+/*****************************************************************************/
+-- Basic test
+
+SELECT ok(true);
+
+/*****************************************************************************/
+-- Finish
+
+SELECT * FROM finish();
+
+ROLLBACK;
+endsnippet
+
 # COLUMNS
+
 snippet coltz "Column timestamp with time zone"
 ${1:column_name} timestamp with time zone ${2:default CURRENT_TIMESTAMP } ${3:not null},
 endsnippet
@@ -60,8 +82,10 @@ BEGIN
 	ELSIF TG_OP = 'UPDATE' THEN
 
 	END IF;
+
+	RETURN NEW;
 END;
-$BODY$ LANGUAGE ${2:plpgsql};
+$BODY$ LANGUAGE ${2:plpgsql} VOLATILE;
 
 endsnippet
 
@@ -124,7 +148,7 @@ snippet tablev "Verify a table (sqitch verify)"
 SELECT * FROM ${1:schema.table} WHERE false;
 endsnippet
 
-snippet tr "Trigger (insert or update)" b
+snippet /tr(igger)?/ "Trigger (insert or update)" br
 CREATE TRIGGER ${1/\./_/}_trigger
 	AFTER INSERT OR UPDATE ON ${1:schema.table}
 		FOR EACH ROW
@@ -136,6 +160,10 @@ endsnippet
 
 snippet nn "NOT NULL"
 not null
+endsnippet
+
+snippet /cl|rn/ "Raise notice" br
+RAISE NOTICE '%', 'hello';
 endsnippet
 
 snippet tz "Timestamp with time zone"
