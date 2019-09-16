@@ -75,15 +75,6 @@ endsnippet
 
 # JSDOC
 
-snippet [@f] "@function jsDoc boilerplate" b
-/**
- * ${1:${VISUAL:Describe this function method}}
- * $0@param args
- * @param [args.db] {Object} - optional db instance
- * @returns {Object} description
- */
-endsnippet
-
 snippet [@fg] "@function get/set accessor jsDoc" b
 /**
  * ${2:${VISUAL:Describe get AND set accessor methods}}
@@ -94,8 +85,8 @@ endsnippet
 snippet @con "@constructor boilerplate" b
 /**
  * ${1:${VISUAL:Construct the class.}}
- * @param args
- * @param [args.db] {Object} - optional db instance
+ * @param {Object} args - options
+ * @param {Object} [args.db] - optional db instance
  */
 endsnippet
 
@@ -111,6 +102,15 @@ snippet @exf "@example boilerplate for function"
 * ${1:instance}.${2:method}($3$0);
 * // expected output: ${4:true}
 
+endsnippet
+
+snippet @f "@function jsDoc boilerplate" b
+/**
+ * ${1:${VISUAL:Describe this function method}}
+ * $0@param {Object} args - options
+ * @param {Objects} [args.db] - optional db instance
+ * @returns {Object} description
+ */
 endsnippet
 
 snippet @fo "@fileoverview Description" b
