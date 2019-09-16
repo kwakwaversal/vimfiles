@@ -139,8 +139,16 @@ call matchadd('OverLength', '\%81v.', 100)
 " Highlight trailing whitespace
 " call matchadd('ErrorMsg', '\s\+$', 100)
 
+
+" Backup outside of current path
+" ------------------------------------------------------------------------------
+
+set backupdir=~/.vim/tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim/tmp,~/tmp,/var/tmp,/tmp
+set backupcopy=yes
+
 " FZF - https://github.com/junegunn/fzf.vim
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 set rtp+=~/.fzf
 
 noremap <Leader>a  :Ag<CR>
@@ -161,7 +169,7 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Plugins
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
@@ -171,7 +179,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 " Source local vimrc if it exists
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
