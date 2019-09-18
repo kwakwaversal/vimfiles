@@ -1,0 +1,26 @@
+snippet [] "Dockerfile boilerplate" b
+FROM ${1:ubuntu:cosmic}
+
+ENV TZ GB
+
+CMD /bin/bash
+endsnippet
+
+snippet [os] "Dockerfile openSUSE boilerplate" b
+FROM ${1:opensuse/leap:42.3}
+
+ENV TZ GB
+ENV TERM ansi
+ENV HOME /root
+
+# https://en.opensuse.org/images/1/17/Zypper-cheat-sheet-1.pdf
+RUN \
+	zypper refresh && \
+	zypper --non-interactive update && \
+	zypper --non-interactive install \
+		nodejs10 \
+		tree && \
+	echo "Zypper finished"
+
+CMD /bin/bash
+endsnippet

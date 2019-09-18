@@ -1,0 +1,165 @@
+# BOILERPLATE
+snippet [] "JavaScript boilerplate" b
+'use strict';
+
+class ${1:Foo} {
+}
+
+module.exports = $1;
+endsnippet
+
+snippet [jest] "Jest boilerplate" b
+const ${1:module_you_are_testing} = require('../lib/${2:modulename}');
+
+describe('something to be tested', () => {
+	const instance = new $1();
+
+	test('something works', () => {
+		expect(true).toBe(true);
+	});
+});
+endsnippet
+
+# COMMON
+
+snippet cl "console.log" b
+console.log(${1:${VISUAL}});
+endsnippet
+
+snippet isArray "Array.isArray()"
+Array.isArray(${1:value})
+endsnippet
+
+snippet switch "switch statement" b
+switch(${1:expression}) {
+	case x:
+		// code block
+		break;
+	case y:
+		// code block
+		break;
+	default:
+		// code block
+}
+endsnippet
+
+snippet throw "throw new errror" b
+throw new Error('${1:Expected value to be string or array}');
+endsnippet
+
+snippet try "try, catch" b
+try {
+	$0${VISUAL}
+} catch (error) {
+	console.log(error);
+}
+endsnippet
+
+# JEST
+
+snippet desc "describe() jest" b
+describe('$3', () => {
+	const ${2:instance} = new $1();
+
+	test('something works', () => {
+		expect($0true).toBe(true);
+	});
+});
+endsnippet
+
+snippet toThrow "expect().toThrow()" b
+expect(() => {
+	${2:${VISUAL:what should throw}}$0
+}).${1:not.}toThrow();
+endsnippet
+
+# JSDOC
+
+snippet [@fg] "@function get/set accessor jsDoc" b
+/**
+ * ${2:${VISUAL:Describe get AND set accessor methods}}
+ * @type {${1:mixed}}
+ */
+endsnippet
+
+snippet @con "@constructor boilerplate" b
+/**
+ * ${1:${VISUAL:Construct the class.}}
+ * @param {Object} args - options
+ * @param {Object} [args.db] - optional db instance
+ */
+endsnippet
+
+snippet @ex "@example boilerplate"
+@example
+* console.log(${1:true})
+* // expected output: ${2:true}
+
+endsnippet
+
+snippet @exf "@example boilerplate for function"
+@example
+* ${1:instance}.${2:method}($3$0);
+* // expected output: ${4:true}
+
+endsnippet
+
+snippet @f "@function jsDoc boilerplate" b
+/**
+ * ${1:${VISUAL:Describe this function method}}
+ * $0@param {Object} args - options
+ * @param {Objects} [args.db] - optional db instance
+ * @returns {Object} description
+ */
+endsnippet
+
+snippet @fo "@fileoverview Description" b
+/**
+ * @fileoverview ${1:${VISUAL:A description of the file}}$0
+ */
+
+endsnippet
+
+snippet @p "@param {Type} varname Description"
+@param {${1:Type}} ${2:varname} - ${3:Description}
+endsnippet
+
+snippet @po "@param optional {Type} varname Description"
+@param {${1:Type}} [${2:varname}] - ${3:Description}
+endsnippet
+
+snippet @ret "@return {Type} Description"
+@returns {${1:Type}} ${2:Description}
+endsnippet
+
+# SEQUELIZE
+
+snippet seqr "Sequelize raw query SELECT" b
+const result = await sequelize.query(${1:sql}, {
+	bind: [
+		customer.id,
+		'0 secs',
+		current_timestamp / 1000.0,
+		`${randSecs(10, 60)} secs`,
+	],
+	type: sequelize.QueryTypes.SELECT,
+});
+endsnippet
+
+snippet seqrd "Sequelize raw query DELETE" b
+await sequelize.query(${1:sql}, {
+	type: sequelize.QueryTypes.DELETE,
+});
+endsnippet
+
+snippet seqri "Sequelize raw query INSERT" b
+await sequelize.query(${1:sql}, {
+	type: sequelize.QueryTypes.INSERT,
+});
+endsnippet
+
+snippet seqru "Sequelize raw query UPDATE" b
+await sequelize.query(${1:sql}, {
+	type: sequelize.QueryTypes.UPDATE,
+});
+endsnippet

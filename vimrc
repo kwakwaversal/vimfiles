@@ -178,6 +178,19 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+
+" Auto commands (included here to take precedence over plugins)
+" -----------------------------------------------------------------------------
+" Explicitly set the Ultisnips syntax for Dockerfile.snippets. When used with
+" Dockerfile.vim (https://github.com/ekalinin/Dockerfile.vim), the `ftdetect`
+" takes priority over Ultisnips' syntax highlighting option.
+autocmd BufNewFile,BufRead Dockerfile.snippets set ft=snippets
+
 " Source local vimrc if it exists
 " ------------------------------------------------------------------------------
 if filereadable(glob("~/.vimrc.local"))

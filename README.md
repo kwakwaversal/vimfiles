@@ -40,9 +40,9 @@ directly from within `vim` itself.
 Update/install the latest version of vim (optionally with clipboard support).
 
 ```console
-$ apt-get install libx11-dev libxt-dev
+$ apt-get install libx11-dev libxt-dev libperl-dev python python-dev
 $ git clone --depth 1 https://github.com/vim/vim
-$ ./configure --enable-gui=no --enable-perlinterp --enable-pythoninterp=yes --with-features=huge --with-x
+$ ./configure --disable-gui --enable-perlinterp --enable-python3interp=yes --with-features=huge --with-compiledby=inside --without-x
 $ make -j8
 $ make install
 ```
