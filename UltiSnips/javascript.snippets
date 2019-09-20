@@ -26,7 +26,7 @@ snippet cl "console.log" b
 console.log(${1:${VISUAL}});
 endsnippet
 
-snippet isArray "Array.isArray()"
+snippet isArray "Array.isArray()" i
 Array.isArray(${1:value})
 endsnippet
 
@@ -55,6 +55,20 @@ try {
 }
 endsnippet
 
+# ES6
+
+snippet get "get() ES6" b
+get ${1:method}() {
+	${2:throw new Error('Accessor "$1()" not implemented by subclass');}
+}
+endsnippet
+
+snippet set "set() ES6" b
+set ${1:method}(${2:value}) {
+	${3:throw new Error('Accessor "$1()" not implemented by subclass');}
+}
+endsnippet
+
 # JEST
 
 snippet desc "describe() jest" b
@@ -67,6 +81,12 @@ describe('$3', () => {
 });
 endsnippet
 
+snippet test "test() jest" b
+test('something works', () => {
+	expect($0true).toBe(true);
+});
+endsnippet
+
 snippet toThrow "expect().toThrow()" b
 expect(() => {
 	${2:${VISUAL:what should throw}}$0
@@ -74,13 +94,6 @@ expect(() => {
 endsnippet
 
 # JSDOC
-
-snippet [@fg] "@function get/set accessor jsDoc" b
-/**
- * ${2:${VISUAL:Describe get AND set accessor methods}}
- * @type {${1:mixed}}
- */
-endsnippet
 
 snippet @con "@constructor boilerplate" b
 /**
@@ -110,6 +123,13 @@ snippet @f "@function jsDoc boilerplate" b
  * $0@param {Object} args - options
  * @param {Objects} [args.db] - optional db instance
  * @returns {Object} description
+ */
+endsnippet
+
+snippet @fg "@function get/set accessor jsDoc" b
+/**
+ * ${2:${VISUAL:Describe get AND set accessor methods}}
+ * @type {${1:mixed}}
  */
 endsnippet
 
