@@ -107,7 +107,7 @@ map <Leader>vz :VimuxZoomRunner<CR>
 
 " Custom mappings
 " ------------------------------------------------------------------------------
-noremap <Leader>bz   :tabnew %<CR>
+noremap <Leader>bz   :tabnew %<CR><c-o>
 noremap <Leader>s    :!sort<CR>
 noremap <Leader>uuid :exe 'norm i' . system("echo -n $(uuidgen -r)")<CR>
 noremap <Leader>vrc  :source ~/.vim/vimrc<CR>
