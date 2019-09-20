@@ -126,6 +126,7 @@ for more information.
     shortcuts to move effortlessly between vim and tmux splits and panes, using
     the vimux plugin and more.
 * [Using tab pages](http://vim.wikia.com/wiki/Using_tab_pages)
+* [Vim foldding](https://medium.com/vim-drops/javascript-folding-on-vim-119c70d2e872)
 * [Vim genius](http://www.vimgenius.com/) online flashcard-style vim game
 * [Vim tips and tricks](https://www.cs.swarthmore.edu/help/vim/home.html)
     contains useful tips on reformatting text.

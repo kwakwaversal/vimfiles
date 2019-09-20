@@ -4,6 +4,13 @@ let g:javascript_plugin_jsdoc = 1
 
 noremap <Leader>p  :call VimuxRunCommand("clear; npx jest --watch " . bufname("%"))<CR>
 
+" JavaScript folding
+setlocal foldlevel=99
+setlocal foldlevelstart=99
+setlocal foldmethod=syntax
+setlocal foldcolumn=0
+let javaScript_fold=1
+
 " Toggle `only` in the closest `test(...)` or `it(...)` block.
 "
 " test('foo', () => {})    <-> test.only('foo', () => {})
