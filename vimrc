@@ -1,7 +1,6 @@
 " vim: set ts=2 sw=2 et :
 
 let mapleader = " "
-nnoremap ; :
 
 if !exists("g:syntax_on")
   syntax enable
@@ -119,7 +118,6 @@ noremap :Q :q        " remap common typos
 noremap :W :w        " especially this one
 noremap :X :x        "
 
-nmap <Leader><Leader> V
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
