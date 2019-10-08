@@ -15,23 +15,31 @@ let javaScript_fold=1
 "
 " test('foo', () => {})    <-> test.only('foo', () => {})
 " it.only('foo', () => {}) <-> it('foo', () => {})
-function! s:jestTestOnly()
+function! s:jestTestOnly(toggle)
   " save position so we can return to it (useful when used with 'c' command)
   let l:savePos = getpos(".")
 
   " search backwards for the word `test` or `it`
-  if (!search('^\s*\(test\|it\)', 'bzc', 0))
+  if (!search('^\s*\(test\|it\)', 'sbzc', 0))
     return
   endif
 
   if (!search('\.only(', 'zc', line(".")))
-    normal! f(i.only
+    if (a:toggle == 1)
+      normal! f(i.only
+    endif
     call setpos('.', l:savePos)
     return
   endif
 
-  normal! dt(
-  call setpos('.', l:savePos)
+  if (a:toggle == 1)
+    normal! dt(
+    call setpos('.', l:savePos)
+  else
+    normal! vt(
+  endif
 endfunction
 
-onoremap <silent> jo :<c-u>call <sid>jestTestOnly()<cr>
+onoremap <silent> jo :<c-u>call <sid>jestTestOnly(0)<cr>
+xnoremap <silent> jo :<c-u>call <sid>jestTestOnly(0)<cr>
+noremap <Leader>jo :<c-u>call <sid>jestTestOnly(1)<cr><c-o>
