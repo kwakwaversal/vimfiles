@@ -189,6 +189,19 @@ let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 " takes priority over Ultisnips' syntax highlighting option.
 autocmd BufNewFile,BufRead Dockerfile.snippets set ft=snippets
 
+augroup VIMRC
+  autocmd!
+  autocmd BufLeave *.css,*.scss normal! mC
+  autocmd BufLeave *.feature    normal! mF
+  autocmd BufLeave *.html       normal! mH
+  autocmd BufLeave *.js,*.ts    normal! mJ
+  autocmd BufLeave *.md         normal! mM
+  autocmd BufLeave *.sql        normal! mS
+  autocmd BufLeave *.snippets   normal! mU
+  autocmd BufLeave *.yml,*.yaml normal! mY
+  autocmd BufLeave .env*        normal! mE
+augroup END
+
 " Source local vimrc if it exists
 " ------------------------------------------------------------------------------
 if filereadable(glob("~/.vimrc.local"))
