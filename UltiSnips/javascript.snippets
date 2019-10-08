@@ -8,6 +8,12 @@ class ${1:Foo} {
 module.exports = $1;
 endsnippet
 
+snippet /\[a(sync)?\]/ "Async function expression as IIFE" br
+(async () => {
+	${1:${VISUAL}}
+})();
+endsnippet
+
 snippet [jest] "Jest boilerplate" b
 const ${1:module_you_are_testing} = require('../lib/${2:modulename}');
 
@@ -81,6 +87,12 @@ describe('$3', () => {
 });
 endsnippet
 
+snippet it "it() jest" b
+it('${1:works}', () => {
+	expect($0true).toBe(true);
+});
+endsnippet
+
 snippet test "test() jest" b
 test('something works', () => {
 	expect($0true).toBe(true);
@@ -94,6 +106,14 @@ expect(() => {
 endsnippet
 
 # JSDOC
+
+snippet @class "@class Description" b
+/**
+ * ${1:Class representing a dot.}
+ * @extends ${2:Point}
+ */
+$0
+endsnippet
 
 snippet @con "@constructor boilerplate" b
 /**

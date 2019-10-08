@@ -1,0 +1,17 @@
+snippet [] "Snippet boilerplate" b
+snippet ${1:name} "${2:description}" ${3:b}
+$0
+`!p snip.rv = "endsnippet"`
+endsnippet
+
+snippet snip "Snippet boilerplate" b
+snippet ${1:name} "${2:description}" ${3:b}
+$0
+`!p snip.rv = "endsnippet"`
+endsnippet
+
+snippet snipre "Regex snippet" b
+snippet /${1:name(s)?}/ "${2:description}" ${3:br}
+$0
+`!p snip.rv = "endsnippet"`
+endsnippet
