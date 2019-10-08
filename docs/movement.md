@@ -17,6 +17,14 @@ See `:h word-motions`.
 * `f{char}` move cursor and place on `{char}`
 * `t{char}` move cursor and place to left of `{char}`
 
+# Marks
+* `'<` & `'>` start/end of visual selection
+* `'[` & `']` start/end of last change or yank
+* `'.` position of where last change was made
+* `'^' position of cursor when vim last left insert mode - this is how `gi`
+  command works
+* `''` position before last jump (super useful) see `:h ''`
+
 # Match
 * `%` { match } [ parenthesis ] < and brackets >
 * `[{` jump to the beginning of a C code block (while, switch, if etc)
