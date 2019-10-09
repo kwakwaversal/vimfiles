@@ -72,6 +72,7 @@ fonts] `Liberation Mono for Powerline`.
 * [vim-gitgutter](https://github.com/airblade/vim-gitgutter) git line diffs in the "gutter"
 * [vim-pgsql](https://github.com/exu/pgsql.vim) Vim Postgresql syntax file
 * [vim-perl](https://github.com/vim-perl/vim-perl) perl 5 and 6 support
+* [vim-projectionist](https://github.com/tpope/vim-projectionist.git) cycle between related files
 * [vim-repeat](https://github.com/tpope/vim-repeat) add vim repeat feature to extra plugins (e.g., surround)
 * [vim-surround](https://github.com/tpope/vim-surround) manipulate surroundings in pairs
 * [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) navigate between vim and tmux splits
