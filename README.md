@@ -40,11 +40,14 @@ directly from within `vim` itself.
 Update/install the latest version of vim (optionally with clipboard support).
 
 ```console
-$ apt-get install libx11-dev libxt-dev libperl-dev python python-dev
-$ git clone --depth 1 https://github.com/vim/vim
-$ ./configure --disable-gui --enable-perlinterp --enable-python3interp=yes --with-features=huge --with-compiledby=inside --without-x
-$ make -j8
-$ make install
+apt-get install libx11-dev libxt-dev libperl-dev ncurses-dev python python-dev
+git clone --depth 1 https://github.com/vim/vim
+# python3
+./configure --disable-gui --enable-perlinterp --enable-python3interp=yes --with-features=huge --with-compiledby=inside --with-x
+# python2
+./configure --disable-gui --enable-perlinterp --enable-python3interp=yes --with-features=huge --with-compiledby=inside --with-x
+make -j8
+make install
 ```
 
 Alternatively see https://github.com/jjangsangy/Dotfiles/wiki/Debian-Vim for
