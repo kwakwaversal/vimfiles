@@ -32,6 +32,10 @@ snippet cl "console.log" b
 console.log(${1:${VISUAL}});
 endsnippet
 
+snippet ce "console.error" b
+console.error(${1:${VISUAL}});
+endsnippet
+
 snippet isArray "Array.isArray()" i
 Array.isArray(${1:value})
 endsnippet
@@ -127,7 +131,6 @@ snippet @ex "@example boilerplate"
 @example
 * console.log(${1:true})
 * // expected output: ${2:true}
-
 endsnippet
 
 snippet @exf "@example boilerplate for function"
