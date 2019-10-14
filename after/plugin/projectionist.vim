@@ -17,6 +17,12 @@ let g:projectionist_heuristics = {
       \         "deploy/{}.sql"
       \       ],
       \       "type": "verify"
+      \     },
+      \     "test/*.sql": {
+      \       "alternate": [
+      \         "deploy/{}.sql"
+      \       ],
+      \       "type": "test"
       \     }
       \   }
       \ }
