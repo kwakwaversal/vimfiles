@@ -1,5 +1,5 @@
 setlocal equalprg=perltidy
 
-noremap <Leader>p  :call VimuxRunCommand("clear; prove -lv " . bufname("%"))<CR>
-noremap <Leader>pd :call VimuxRunCommand("clear; perldoc " . bufname("%"))<CR>
-noremap <Leader>pry  ouse Pry; pry();<ESC><CR>
+noremap <buffer> <LocalLeader>p  :call VimuxRunCommand("clear; prove -lv " . bufname("%"))<CR>
+noremap <buffer> <LocalLeader>pd :call VimuxRunCommand("clear; perldoc " . bufname("%"))<CR>
+noremap <buffer> <LocalLeader>pry  ouse Pry; pry();<ESC><CR>

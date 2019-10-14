@@ -1,6 +1,7 @@
 " vim: set ts=2 sw=2 et :
 
 let mapleader = " "
+let maplocalleader = " "
 
 if !exists("g:syntax_on")
   syntax enable

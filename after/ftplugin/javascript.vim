@@ -2,7 +2,7 @@ setlocal equalprg=prettier\ --stdin\ --stdin-filepath\ %\ --trailing-comma\ all\
 
 let g:javascript_plugin_jsdoc = 1
 
-noremap <Leader>p  :call VimuxRunCommand("clear; npx jest --watch " . bufname("%"))<CR>
+noremap <buffer> <LocalLeader>p  :call VimuxRunCommand("clear; npx jest --watch " . bufname("%"))<CR>
 
 " JavaScript folding
 setlocal foldlevel=99
@@ -42,4 +42,4 @@ endfunction
 
 onoremap <silent> jo :<c-u>call <sid>jestTestOnly(0)<cr>
 xnoremap <silent> jo :<c-u>call <sid>jestTestOnly(0)<cr>
-noremap <Leader>jo :<c-u>call <sid>jestTestOnly(1)<cr><c-o>
+noremap <buffer> <LocalLeader>jo :<c-u>call <sid>jestTestOnly(1)<cr><c-o>
