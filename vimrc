@@ -201,6 +201,7 @@ augroup VIMRC
   autocmd BufLeave *.snippets   normal! mU
   autocmd BufLeave *.yml,*.yaml normal! mY
   autocmd BufLeave .env*        normal! mE
+  autocmd BufLeave *.vim        normal! mV
 augroup END
 
 " Source local vimrc if it exists
