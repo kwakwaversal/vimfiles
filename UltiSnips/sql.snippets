@@ -3,13 +3,18 @@
 snippet [pgtap] "pgTAP boilerplate test" b
 BEGIN;
 
-SELECT plan(1);
-/* SELECT * FROM no_plan(); */
+/* SELECT plan(1); */
+SELECT * FROM no_plan();
 
 /*****************************************************************************/
 -- Basic test
 
 SELECT ok(true);
+
+/****************************************************************************/
+-- Uncomment to make it easier testing functions without sqitch rebasing
+
+/* \i deploy/functions/foo.sql */
 
 /*****************************************************************************/
 -- Finish
@@ -38,8 +43,16 @@ snippet colb "Column boolean"
 ${1:column_name} boolean${2: default false}${3: not null},
 endsnippet
 
+snippet colc "Column text with CHECK"
+${1:column_name} text${2: default ''}${3: not null}${4: CHECK ($1 IN ('foo', 'bar'))},
+endsnippet
+
 snippet cold "Column date"
 ${1:column_name} date${2: default CURRENT_DATE}${3: not null},
+endsnippet
+
+snippet cole "Column enum"
+${1:column_name} ${2:schema.enum_type}${3: default '$0foo'::$2}${4: not null},
 endsnippet
 
 snippet coli "Column integer"
@@ -80,7 +93,12 @@ COMMENT ON SCHEMA ${1:schemaname} IS
 '${2:Insert comment here}';
 endsnippet
 
-snippet comT "Comment on type" b
+snippet "comt" "Comment on trigger" br
+COMMENT ON TRIGGER ${1:triggername} ON ${schema.table} IS
+'${2:Insert comment here}';
+endsnippet
+
+snippet "comT" "Comment on type" br
 COMMENT ON TYPE ${1:schema.type} IS
 '${2:Insert comment here}';
 endsnippet
@@ -109,12 +127,29 @@ $BODY$ LANGUAGE ${2:plpgsql} VOLATILE;
 
 endsnippet
 
+snippet dfs "Create function SQL language" b
+CREATE FUNCTION dup(in int, out f1 int, out f2 text)
+	AS
+$BODY$
+	SELECT $1, CAST($1 AS text) || ' is text'
+$BODY$
+LANGUAGE SQL;
+endsnippet
+
 snippet dfr "Delete function" b
 DROP FUNCTION ${1:schema.function_name}();
 endsnippet
 
 snippet dfv "Verify function" b
 SELECT has_function_privilege('${1:schema.function_name}(${2:attrs})', 'execute');
+endsnippet
+
+snippet dtr "Delete table" b
+DROP TABLE ${1:schema.table_name};
+endsnippet
+
+snippet dtv "Verify table" b
+SELECT * FROM ${1:schema.table_name} WHERE false;
 endsnippet
 
 snippet enum "Enum type" b
@@ -181,14 +216,39 @@ CREATE TRIGGER ${1/\./_/}_trigger
 		EXECUTE PROCEDURE ${2:schema.trigger_function}();
 endsnippet
 
+# PGTAP
+
+snippet - "Horizontal rule" b
+/*****************************************************************************/
+-- ${1:Test trigger}
+endsnippet
+
+snippet "(?i)prepare" "prepare statement" br
+PREPARE ${1:statement_name} AS
+	SELECT * FROM schema.foo;
+endsnippet
+
+snippet throws_ok "pgtap throws" b
+SELECT throws_ok(
+	'${1:my_thrower}',
+	'${2:23505}',
+	'${3:duplicate key value violates unique constraint "try_pkey"}',
+	'${4:We should get a unique violation for a duplicate PK}'
+);
+endsnippet
+
 # SHORTCUTS
 
 snippet nn "NOT NULL"
 not null
 endsnippet
 
+snippet /ce|re/ "Raise exception" br
+RAISE EXCEPTION $0'${2:%}'${1:, 'hello'};
+endsnippet
+
 snippet /cl|rn/ "Raise notice" br
-RAISE NOTICE '%', 'hello';
+RAISE NOTICE $0'%', ${1:'hello'};
 endsnippet
 
 snippet tz "Timestamp with time zone"
