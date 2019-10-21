@@ -1,7 +1,27 @@
 setlocal expandtab shiftwidth=2 softtabstop=2
 setlocal spell
 
-noremap <buffer> <LocalLeader>p   :call VimuxRunCommand("clear; npx cucumber-js " . bufname("%"))<CR>
+" uses shell magic to take the buffer filename and figure out the path
+" relative to the pwd of the executing shell session.
+" function! s:relativeBufferName()
+"   let l:relative_buffer_filename = '$(echo ' . bufname() . '| grep -oP "$(pwd | grep -oP "`git rev-parse --show-toplevel`/\K.*")/\K.*")'
+"   call VimuxRunCommand("clear; npx cucumber-js " . l:relative_buffer_filename)
+" endfunction
+
+" noremap <buffer> <LocalLeader>p   :call <SID>relativeBufferName()<CR>
+
+" Takes the current buffer path and splits on a typical cucumber folder
+" layout. This has not been fully tested against edge cases where a username
+" is called `features` for example. Probably will not work.
+" @example
+" Buffer path: /home/me/projects/foo/features/bar.feature
+" Expected console output: clear; npx cucumber-js features/bar.feature
+function! s:stripPathUntilFeatures()
+  let l:cucumber_features_path = split(expand('%:p'), '\v/(features)/')[1]
+  call VimuxRunCommand("clear; npx cucumber-js features/" . l:cucumber_features_path)
+endfunction
+
+noremap <buffer> <LocalLeader>p :call <SID>stripPathUntilFeatures()<CR>
 noremap <buffer> <LocalLeader>wip :call VimuxRunCommand("clear; npx cucumber-js --tags @wip " . bufname("%"))<CR>
 
 " Surround any {string} cucumber parameter types to create cucumber string
