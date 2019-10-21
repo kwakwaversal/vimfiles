@@ -22,7 +22,25 @@ let g:projectionist_heuristics = {
       \       "alternate": [
       \         "deploy/{}.sql"
       \       ],
-      \       "type": "test"
+      \       "type": "test",
+      \       "template": [
+      \         "BEGIN;",
+      \         "",
+      \         "/* SELECT plan(1); */",
+      \         "SELECT * FROM no_plan();",
+      \         "",
+      \         "/*****************************************************************************/",
+      \         "-- Basic test",
+      \         "",
+      \         "SELECT ok(true);",
+      \         "",
+      \         "/*****************************************************************************/",
+      \         "-- Finish",
+      \         "",
+      \         "SELECT * FROM finish();",
+      \         "",
+      \         "ROLLBACK;",
+      \       ]
       \     }
       \   }
       \ }
