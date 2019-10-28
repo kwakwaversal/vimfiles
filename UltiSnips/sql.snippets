@@ -4,7 +4,7 @@ snippet [pgtap] "pgTAP boilerplate test" b
 BEGIN;
 
 /* SELECT plan(1); */
-SELECT * FROM no_plan();
+SELECT no_plan();
 
 /*****************************************************************************/
 -- Basic test
@@ -74,13 +74,13 @@ endsnippet
 # COMMENTS
 
 snippet com "Comment on table" b
-COMMENT ON TABLE ${1:schema.table} IS
+COMMENT ON TABLE ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`} IS
 '${2:Insert comment here}';
 endsnippet
 
 snippet comc "Comment on column" b
-COMMENT ON COLUMN ${1:schema.table.column} IS
-'${2:Insert comment here}';
+COMMENT ON COLUMN ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`}.${2:column} IS
+'${3:Insert comment here}';
 endsnippet
 
 snippet comf "Comment on function" b
@@ -93,14 +93,24 @@ COMMENT ON SCHEMA ${1:schemaname} IS
 '${2:Insert comment here}';
 endsnippet
 
+snippet comr "Comment on trigger" b
+COMMENT ON RULE ${1:rulename} ON ${2:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`} IS
+'${3:Insert comment here}';
+endsnippet
+
 snippet "comt" "Comment on trigger" br
-COMMENT ON TRIGGER ${1:triggername} ON ${schema.table} IS
-'${2:Insert comment here}';
+COMMENT ON TRIGGER ${1:triggername} ON ${2:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`} IS
+'${3:Insert comment here}';
 endsnippet
 
 snippet "comT" "Comment on type" br
 COMMENT ON TYPE ${1:schema.type} IS
 '${2:Insert comment here}';
+endsnippet
+
+snippet comi "Comment on index" b
+COMMENT ON INDEX ${1:schema.indexname} IS
+'${3:Insert comment here}';
 endsnippet
 
 # GENERAL
@@ -157,25 +167,37 @@ CREATE TYPE ${1:schema.type} AS ENUM (${2:'foo', 'bar'});$0
 endsnippet
 
 snippet fk "Foreign key (cascade)" b
-ALTER TABLE ONLY ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table" `}
+ALTER TABLE ONLY ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`}
 	ADD CONSTRAINT ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_fkey
 		FOREIGN KEY ($2) REFERENCES ${3:schema.other_table}(${4:id})
 			ON UPDATE $0CASCADE ON DELETE CASCADE;
 endsnippet
 
 snippet idx "Index" b
-CREATE INDEX ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_idx ON ${1:schema.table}
+CREATE INDEX ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_idx ON ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`}
 	USING btree (${2:column});
 endsnippet
 
 snippet /idxu|uidx/ "Unique index" br
-CREATE UNIQUE INDEX ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_idx ON ${1:schema.table}
+CREATE UNIQUE INDEX ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_idx ON ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`}
 	USING btree (${2:column});
 endsnippet
 
 snippet pk "Primary key" b
 ALTER TABLE ONLY ${1:schema.table}
 	ADD CONSTRAINT ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_pkey PRIMARY KEY (${2:id});
+endsnippet
+
+snippet rule "Create a rule" b
+CREATE RULE ${1:table_protect} AS ON INSERT OR UPDATE
+	TO ${2:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`} WHERE (
+		OLD.id IS DISTINCT FROM NEW.id
+		OR OLD.campaign_id IS DISTINCT FROM NEW.campaign_id
+		OR OLD.cli IS DISTINCT FROM NEW.cli
+		OR OLD.created_at IS DISTINCT FROM NEW.created_at
+		OR OLD.created_by IS DISTINCT FROM NEW.created_by
+	)
+	DO INSTEAD NOTHING;
 endsnippet
 
 snippet schema "Create schema" b
@@ -235,6 +257,23 @@ SELECT throws_ok(
 	'${3:duplicate key value violates unique constraint "try_pkey"}',
 	'${4:We should get a unique violation for a duplicate PK}'
 );
+endsnippet
+
+# PLPGSQL
+
+snippet "IF EXISTS" "if exists block" b
+IF EXISTS (
+	SELECT
+	FROM
+		schema.tablename
+	WHERE
+		foo = bar
+)
+THEN
+	--
+ELSE
+	--
+END IF;
 endsnippet
 
 # SHORTCUTS
