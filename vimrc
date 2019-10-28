@@ -115,6 +115,7 @@ nmap <Esc>k :Ack! "\b<cword>\b" <CR>
 " ------------------------------------------------------------------------------
 nmap \x :cclose<CR>
 nmap \p :set paste!<CR>
+nmap \d :bp\|bd #<CR>
 
 " I think this toggles between the position of the last buffer
 nmap <C-e> :e#<CR>
