@@ -16,13 +16,17 @@ setlocal spell
 " @example
 " Buffer path: /home/me/projects/foo/features/bar.feature
 " Expected console output: clear; npx cucumber-js features/bar.feature
-function! s:stripPathUntilFeatures()
+function! s:stripPathUntilFeatures(isWip)
   let l:cucumber_features_path = split(expand('%:p'), '\v/(features)/')[1]
-  call VimuxRunCommand("clear; npx cucumber-js features/" . l:cucumber_features_path)
+  if (a:isWip == 1)
+    call VimuxRunCommand("clear; npx cucumber-js --tags @wip features/" . l:cucumber_features_path)
+  else
+    call VimuxRunCommand("clear; npx cucumber-js features/" . l:cucumber_features_path)
+  endif
 endfunction
 
-noremap <buffer> <LocalLeader>p :call <SID>stripPathUntilFeatures()<CR>
-noremap <buffer> <LocalLeader>wip :call VimuxRunCommand("clear; npx cucumber-js --tags @wip " . bufname("%"))<CR>
+noremap <buffer> <LocalLeader>p :call <SID>stripPathUntilFeatures(0)<CR>
+noremap <buffer> <LocalLeader>wip :call <SID>stripPathUntilFeatures(1)<CR>
 
 " Surround any {string} cucumber parameter types to create cucumber string
 " expression with single quotes.
