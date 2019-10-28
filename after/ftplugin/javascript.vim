@@ -43,3 +43,26 @@ endfunction
 onoremap <silent> jo :<c-u>call <sid>jestTestOnly(0)<cr>
 xnoremap <silent> jo :<c-u>call <sid>jestTestOnly(0)<cr>
 noremap <buffer> <LocalLeader>jo :<c-u>call <sid>jestTestOnly(1)<cr><c-o>
+
+function! s:aroundFunction()
+    " search backwards for the word function
+    if (!search('function', 'bzc', 0))
+        return
+    endif
+
+    let l:lineNr = line('.')
+
+    " set visual mode
+    normal! v
+
+    " search forwards for the opening bracket
+    if (!search('{', 'zc', l:lineNr + 1))
+        return
+    endif
+
+    " Jump to matching closing bracket
+    normal! %
+endfunction
+
+onoremap <silent> af :<c-u>call <sid>aroundFunction()<cr>o
+xnoremap <silent> af :<c-u>call <sid>aroundFunction()<cr>o
