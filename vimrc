@@ -113,6 +113,8 @@ nmap <Esc>k :Ack! "\b<cword>\b" <CR>
 
 " common(ish) macros
 " ------------------------------------------------------------------------------
+nnoremap <c-w>t :tabnew<CR>
+nnoremap <c-w>z :tabnew %<CR><c-o>
 nmap \x :cclose<CR>
 nmap \p :set paste!<CR>
 nmap \d :bp\|bd #<CR>
@@ -129,7 +131,6 @@ map <Leader>vz :VimuxZoomRunner<CR>
 
 " Custom mappings
 " ------------------------------------------------------------------------------
-noremap <Leader>bz   :tabnew %<CR><c-o>
 noremap <Leader>s    :!sort<CR>
 noremap <Leader>uuid :exe 'norm i' . system("echo -n $(uuidgen -r)")<CR>
 noremap <Leader>vrc  :source ~/.vim/vimrc<CR>
