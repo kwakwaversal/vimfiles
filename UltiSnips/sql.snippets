@@ -59,6 +59,15 @@ snippet coli "Column integer"
 ${1:column_name} integer${2: default 0}${3: not null},
 endsnippet
 
+snippet colj "Column integer"
+${1:column_name} jsonb${2: default '{}'}${3: not null} constraint table_column__is_object_check
+	check (jsonb_typeof($1) = 'object'),
+endsnippet
+
+snippet cols "Column SERIAL"
+${1:column_name} serial not null,
+endsnippet
+
 snippet coltz "Column timestamp with time zone"
 ${1:column_name} timestamp with time zone${2: default CURRENT_TIMESTAMP}${3: not null},
 endsnippet
@@ -69,6 +78,18 @@ endsnippet
 
 snippet colu "Column uuid"
 ${1:column_name} uuid${2: default public_gen_random_id()}${3: not null},
+endsnippet
+
+snippet colv "Column verify (sqitch)" b
+SELECT
+	1/(count(*) = 3)::integer
+FROM
+	information_schema.columns
+WHERE
+	table_schema = '${1:schema}'
+	and table_name = '${2:table}'
+	and column_name in ('from', 'to', 'replyto')
+	and data_type = '${3:jsonb}';
 endsnippet
 
 # COMMENTS
@@ -166,6 +187,13 @@ snippet enum "Enum type" b
 CREATE TYPE ${1:schema.type} AS ENUM (${2:'foo', 'bar'});$0
 endsnippet
 
+snippet format "SQL format (PostgreSQL only?)" i
+format(
+	'${1:select dnc from cxm.contact_data where id=%L}',
+	${2::contact_data_id}
+),
+endsnippet
+
 snippet fk "Foreign key (cascade)" b
 ALTER TABLE ONLY ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`}
 	ADD CONSTRAINT ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_fkey
@@ -173,9 +201,42 @@ ALTER TABLE ONLY ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`}
 			ON UPDATE $0CASCADE ON DELETE CASCADE;
 endsnippet
 
+snippet FK "Foreign key (alt)" b
+FOREIGN KEY (${1:foo_id}) REFERENCES ${2:schema.other_table} (${3:id})
+	ON UPDATE CASCADE ON DELETE CASCADE,
+endsnippet
+
+snippet fkr "Revert foreign key" b
+ALTER TABLE ONLY ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`}
+	DROP CONSTRAINT ${2:fk_constraint_name};
+endsnippet
+
+snippet fkv "Verify a foreign key (sqitch verify)"
+SELECT
+	1/count(*) -- exists
+	1/(count(*) = 0)::integer -- fk no longer exists
+FROM
+	information_schema.table_constraints
+WHERE
+	table_schema = '${1:schemaname}'
+	AND constraint_name = '${2:constraintname}';
+endsnippet
+
 snippet idx "Index" b
 CREATE INDEX ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_idx ON ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`}
 	USING btree (${2:column});
+endsnippet
+
+snippet idxv "Index sqitch verify" b
+SELECT
+	1/count(*) -- exists
+	1/(count(*) = 0)::integer -- index no longer exists
+FROM
+	pg_indexes
+WHERE
+	schemaname = '${1:schemaname}'
+	AND tablename = '${2:tablename}'
+	AND indexname = '${3:indexname}';
 endsnippet
 
 snippet /idxu|uidx/ "Unique index" br
@@ -184,8 +245,12 @@ CREATE UNIQUE INDEX ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_idx ON ${1:`!v strle
 endsnippet
 
 snippet pk "Primary key" b
-ALTER TABLE ONLY ${1:schema.table}
+ALTER TABLE ONLY ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`}
 	ADD CONSTRAINT ${1/(?:[^.]+\.)?(.*)/$1/}_${2/(.*)/$1/}_pkey PRIMARY KEY (${2:id});
+endsnippet
+
+snippet PK "Primary key (alt)" b
+PRIMARY KEY (id),
 endsnippet
 
 snippet rule "Create a rule" b
@@ -215,20 +280,23 @@ endsnippet
 snippet table "Create a table" b
 create table ${1:schema.table} (
 	id uuid default public.gen_random_uuid() not null,
-	id uuid default public.uuid_generate_v4() not null,$0
+	id uuid default public.uuid_generate_v4() not null,$0 -- from "uuid-ossp", not recommended
 	created_at timestamp with time zone default CURRENT_TIMESTAMP not null,
 	created_by uuid,
 	updated_at timestamp with time zone default CURRENT_TIMESTAMP not null,
-	updated_by uuid
+	updated_by uuid,
+	PRIMARY KEY (id),
+	FOREIGN KEY (foo_id) REFERENCES schema.table (id)
+		ON UPDATE CASCADE ON DELETE CASCADE,
 );
 endsnippet
 
 snippet tabler "Delete a table (sqitch revert)"
-DROP TABLE ${1:schema.table};
+DROP TABLE ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`};
 endsnippet
 
 snippet tablev "Verify a table (sqitch verify)"
-SELECT * FROM ${1:schema.table} WHERE false;
+SELECT * FROM ${1:`!v strlen(getreg("t")) ? getreg("t") : "schema.table"`} WHERE false;
 endsnippet
 
 snippet /tr(igger)?/ "Trigger (insert or update)" br
@@ -260,6 +328,19 @@ SELECT throws_ok(
 endsnippet
 
 # PLPGSQL
+
+snippet do "do block" b
+DO $$
+DECLARE
+	l_rec record;
+BEGIN
+	FOR l_rec IN
+		SELECT * FROM information_schema.tables WHERE table_schema = 'public'
+	LOOP
+		RAISE NOTICE '%', l_rec.table_name;
+	END LOOP;
+END $$;
+endsnippet
 
 snippet "IF EXISTS" "if exists block" b
 IF EXISTS (
