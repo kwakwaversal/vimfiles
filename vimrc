@@ -124,6 +124,7 @@ nmap <C-e> :e#<CR>
 
 " vimmux - https://github.com/benmills/vimux
 " ------------------------------------------------------------------------------
+map <Leader>vb :VimuxRunCommand("!!")<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vp :VimuxPromptCommand<CR>
