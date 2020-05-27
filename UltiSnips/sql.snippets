@@ -173,6 +173,28 @@ endsnippet
 
 snippet dfv "Verify function" b
 SELECT has_function_privilege('${1:schema.function_name}(${2:attrs})', 'execute');
+
+SELECT
+	1/count(*) -- exists
+	1/(count(*) = 0)::integer -- fk no longer exists
+FROM
+	pg_trigger
+WHERE
+	NOT tgisinternal
+	AND tgname IN (
+		'trigger_name'
+	);
+
+SELECT
+	1/count(*) -- exists
+	1/(count(*) = 0)::integer -- no longer exists
+FROM
+	pg_catalog.pg_proc
+	JOIN pg_namespace ON
+		pg_catalog.pg_proc.pronamespace = pg_namespace.oid
+WHERE
+	proname = 'function_name'
+	AND pg_namespace.nspname = 'schema_name';
 endsnippet
 
 snippet dtr "Delete table" b
@@ -181,6 +203,15 @@ endsnippet
 
 snippet dtv "Verify table" b
 SELECT * FROM ${1:schema.table_name} WHERE false;
+
+SELECT
+	1/(count(*) = 0)::integer -- no longer exists
+FROM
+	information_schema.tables
+	information_schema.views
+WHERE
+	table_schema = '${2:schema_name}'
+	AND table_name = '${3:table_name}';
 endsnippet
 
 snippet enum "Enum type" b

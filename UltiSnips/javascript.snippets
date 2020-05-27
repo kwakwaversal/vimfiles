@@ -14,19 +14,88 @@ snippet /\[a(sync)?\]/ "Async function expression as IIFE" br
 })();
 endsnippet
 
+snippet [cypress] "Cypress default boilerplate" b
+import React from 'react';
+import CypressWrapper from '../../../support/CypressWrapper';
+import ${1:SomeComponent} from '../../src/lib/${2:$1}';
+
+describe('<$1>', () => {
+	before(() => {
+		cy.mount(
+			<CypressWrapper storeData={initialReduxState}>
+				<$1 />
+			</CypressWrapper>,
+		);
+	});
+
+	beforeEach(() => {
+		cy.get('tbody tr').as('agentRows');
+	});
+
+	it('checks initial redux state holds correct amount of rows', () => {
+		cy.get('@agentRows').should('have.length', 3);
+	});
+
+	it('uses redux action to update table', () => {
+		cy.dispatch(
+			actionPutAgentStatus({
+				data: [{ display_name: 'Billy', status: 'Online' }],
+			}),
+			'Set billy online',
+		);
+		cy.get('@agentRows').should('have.length', 1);
+	});
+});
+endsnippet
+
+snippet [CypressTheme] "Cypress default boilerplate" b
+import React from 'react';
+import CypressThemeWrapper from '../../support/CypressThemeWrapper';
+import ${1:SomeComponent} from '../../src/lib/${2:$1}';
+
+const component = (foo) => (
+	<CypressThemeWrapper>
+		<$1 />
+	</CypressThemeWrapper>
+);
+
+describe('<$1>', () => {
+	const selector = 'div[class^="AgentStatus"]';
+
+	it('sets correct tooltip text when "Away"', () => {
+		cy.mount(component('Foo'));
+		cy.get(selector).should('have.attr', 'title', 'Away');
+	});
+});
+endsnippet
+
+snippet [func] "JavaScript function module boilerplate" b
+'use strict';
+
+function ${1:Foo}() {
+}
+
+module.exports = $1;
+endsnippet
+
 snippet [jest] "Jest boilerplate" b
 const ${1:module_you_are_testing} = require('../lib/${2:modulename}');
 
 describe('something to be tested', () => {
 	const instance = new $1();
 
-	test('something works', () => {
+	it('works', () => {
 		expect(true).toBe(true);
 	});
 });
 endsnippet
 
 # COMMON
+
+snippet afunc "async function()" b
+async function ${1:name}($0) {
+}
+endsnippet
 
 snippet cl "console.log" b
 console.log(${1:${VISUAL}});
@@ -36,8 +105,64 @@ snippet ce "console.error" b
 console.error(${1:${VISUAL}});
 endsnippet
 
+snippet "can|has(Own)?Prop(erty)?" "description" r
+${1:myObj}.hasOwnProperty(${2:myProp})
+endsnippet
+
+snippet debugger "debugger for `node inspect` or `npx --node-arg=--inspect-brk`" b
+while (1) {
+	let asyncFunc;
+	debugger;
+	try {
+		console.log(await asyncFunc);
+	}
+	catch (err) {
+		console.log(err);
+	}
+}
+endsnippet
+
+snippet deepClone "deep (simple) clone function"
+/**
+ * Low-frills deep copy.
+ * @see https://stackoverflow.com/a/15040626
+ * @param {Any} v - any value that can be serialized to JSON
+ * @returns {Any} - copied value
+ */
+const deepClone = v => JSON.parse(JSON.stringify(v));
+endsnippet
+
+snippet for "for ... of" b
+for (const ${1:[key, value]} of ${2:iterable}) {
+	$0
+}
+endsnippet
+
+snippet func "function()" b
+function ${1:name}($0) {
+}
+endsnippet
+
 snippet isArray "Array.isArray()" i
 Array.isArray(${1:value})
+endsnippet
+
+snippet "[Pp]romise" "new Promise()" br
+new Promise((resolve, reject) => {
+	${VISUAL}
+});
+endsnippet
+
+snippet reduce "ES6 reduce"
+${1:objectName}.reduce((accumulator, currentValue) => {
+  $0accumulator[currentValue] = 'foo'
+	return accumulator;
+}, {});
+endsnippet
+
+snippet sleep "async sleep" b
+const sleep = m => new Promise(r => setTimeout(r, m))
+await sleep(2000);
 endsnippet
 
 snippet switch "switch statement" b
@@ -85,7 +210,7 @@ snippet desc "describe() jest" b
 describe('$3', () => {
 	const ${2:instance} = new $1();
 
-	test('something works', () => {
+	it('works', () => {
 		expect($0true).toBe(true);
 	});
 });
@@ -127,10 +252,21 @@ snippet @con "@constructor boilerplate" b
  */
 endsnippet
 
+snippet @const "@constant boilerplate" b
+/**
+ * ${1:${VISUAL:Construct the class.}}
+ * @constant
+ * @type {string}
+ * @default
+ */
+endsnippet
+
 snippet @ex "@example boilerplate"
 @example
-* console.log(${1:true})
-* // expected output: ${2:true}
+\`\`\`
+console.log(${1:true})
+// expected output: ${2:true}
+\`\`\`
 endsnippet
 
 snippet @exf "@example boilerplate for function"
@@ -144,8 +280,8 @@ snippet @f "@function jsDoc boilerplate" b
 /**
  * ${1:${VISUAL:Describe this function method}}
  * $0@param {Object} args - options
- * @param {Objects} [args.db] - optional db instance
- * @returns {Object} description
+ * @param {Sequelize} [args.db] - optional db instance
+ * @returns {Object} - description
  */
 endsnippet
 
@@ -198,11 +334,28 @@ endsnippet
 snippet seqri "Sequelize raw query INSERT" b
 await sequelize.query(${1:sql}, {
 	type: sequelize.QueryTypes.INSERT,
+	replacements: {
+		contact_data_id: args.contact_data_id,
+		campaign_id: args.campaign_id,
+		outcome_name: args.outcome_name,
+	},
 });
 endsnippet
 
 snippet seqru "Sequelize raw query UPDATE" b
 await sequelize.query(${1:sql}, {
 	type: sequelize.QueryTypes.UPDATE,
+});
+endsnippet
+
+snippet "seqt(ransaction)?" "Sequelize new transaction" br
+await db.sequelize.transaction(async (transaction) => {
+	await db.sequelize.reuseOrCreateTransaction(
+		transaction,
+		async (transaction) => {
+			await db.foo.create({ bar: 'bar' }, { transaction });
+			await db.bar.create({ foo: 'foo' }, { transaction });
+		},
+	);
 });
 endsnippet

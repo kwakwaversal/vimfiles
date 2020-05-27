@@ -1,0 +1,22 @@
+snippet [] "Cucumber template" b
+# features/`!v split(expand('%:p'), '\v/(features)/')[1] `
+Feature: do not contact
+	As a campaign manager I do not want to call contacts that are in the DNC
+	table. The DNC table supports `email` and `voice` contact types.
+
+	Background:
+		Given a campaign
+		And csv with:
+			"""
+			firstname,tel1
+			Paul W,01617940000
+			Nick D,01615550000
+			"""
+		And the data is uploaded
+
+	Scenario: Number in system DNC should not be contactable
+		Given '01615550000' is dnc
+		Then the next lead should be '01617940000'
+		And the next lead should be 'null'
+
+endsnippet
