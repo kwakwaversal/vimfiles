@@ -2,7 +2,20 @@ setlocal equalprg=prettier\ --stdin\ --stdin-filepath\ %\ --trailing-comma\ all\
 
 let g:javascript_plugin_jsdoc = 1
 
-noremap <buffer> <LocalLeader>p  :call VimuxRunCommand("clear; npx jest --watch " . bufname("%"))<CR>
+" Takes the current buffer path and splits on expected sqitch folders. This
+" has not been fully tested against edge cases where a username is called
+" `test` for example. Probably will not work.
+"
+" @example
+" Buffer path: /home/me/projects/foo/deploy/functions/bar.sql
+" Expected console output: clear; pg_prove -v test/functions/bar.sql
+function! s:jestTestFile()
+  let l:javascript_test_filename = split(expand('%:p'), '\v/(tests)/')[1]
+  call VimuxRunCommand("clear; npx jest --watch tests/" . l:javascript_test_filename)
+endfunction
+
+noremap <buffer> <LocalLeader>p :call <SID>jestTestFile()<CR>
+" noremap <buffer> <LocalLeader>p :call VimuxRunCommand("clear; npx jest --watch " . bufname("%"))<CR>
 
 " JavaScript folding
 setlocal foldlevel=99
