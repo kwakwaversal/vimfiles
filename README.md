@@ -45,7 +45,7 @@ git clone --depth 1 https://github.com/vim/vim
 # python3
 ./configure --disable-gui --enable-perlinterp --enable-python3interp=yes --with-features=huge --with-compiledby=inside --with-x
 # python2
-./configure --disable-gui --enable-perlinterp --enable-python3interp=yes --with-features=huge --with-compiledby=inside --with-x
+./configure --disable-gui --enable-perlinterp --enable-pythoninterp=yes --with-features=huge --with-compiledby=inside --with-x
 make -j8
 make install
 ```
