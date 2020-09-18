@@ -24,6 +24,19 @@ SELECT * FROM finish();
 ROLLBACK;
 endsnippet
 
+snippet /* "description" b
+/**
+ *$0
+ * @example
+ \`\`\`
+ \`\`\`
+ */
+endsnippet
+
+snippet \i "enable debugging by default" b
+\i sql/debugging.sql
+endsnippet
+
 # COLUMNS
 
 snippet /atc(ol)?/ "Alter table col" br
@@ -56,7 +69,8 @@ ${1:column_name} ${2:schema.enum_type}${3: default '$0foo'::$2}${4: not null},
 endsnippet
 
 snippet coli "Column integer"
-${1:column_name} integer${2: default 0}${3: not null},
+${1:column_name} integer${2: default 0}${3: not null}
+	constraint $1_check CHECK ($1 >= ${0}0 AND $1 < 100),
 endsnippet
 
 snippet colj "Column integer"
@@ -135,6 +149,17 @@ COMMENT ON INDEX ${1:schema.indexname} IS
 endsnippet
 
 # GENERAL
+
+snippet @ "description" b
+SELECT
+	1/(COUNT(*) = 0)::integer -- does not exist
+	1/COUNT(*)                -- 1 exists
+	1/(count(*) = 2)::integer -- 2 exist
+FROM
+	foo
+WHERE
+	bar = false;
+endsnippet
 
 snippet dft "Create function trigger" b
 CREATE OR REPLACE FUNCTION ${1:schema.function_name}()
@@ -337,6 +362,17 @@ CREATE TRIGGER ${1/\./_/}_trigger
 		EXECUTE PROCEDURE ${2:schema.trigger_function}();
 endsnippet
 
+snippet WITH "Start a CTE" b
+WITH ${1:foo} AS
+(
+	SELECT 1
+)${2:, $1 AS
+(
+	SELECT 1
+)}
+SELECT * FROM $1;
+endsnippet
+
 # PGTAP
 
 snippet - "Horizontal rule" b
@@ -349,6 +385,14 @@ PREPARE ${1:statement_name} AS
 	SELECT * FROM schema.foo;
 endsnippet
 
+snippet throws_like "pgtap throws_like" b
+SELECT throws_like(
+	$SQL$INSERT INTO uac.roles(application, name) values('wfo', 'Hah')$SQL$,
+	'%roles_name_is_lowercase%',
+	'no upper case letters'
+);
+endsnippet
+
 snippet throws_ok "pgtap throws" b
 SELECT throws_ok(
 	'${1:my_thrower}',
@@ -359,6 +403,16 @@ SELECT throws_ok(
 endsnippet
 
 # PLPGSQL
+
+snippet "CREATE FUNCTION" "Create a function" b
+CREATE FUNCTION pg_temp.${1:some_function}(
+) RETURNS void AS
+$BODY$
+BEGIN
+  $0
+END;
+$BODY$ LANGUAGE plpgsql VOLATILE;
+endsnippet
 
 snippet do "do block" b
 DO $$

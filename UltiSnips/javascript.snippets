@@ -87,6 +87,23 @@ describe('something to be tested', () => {
 	it('works', () => {
 		expect(true).toBe(true);
 	});
+
+	it('works', () => {
+		const input = [
+			{
+				in: { foo: true },
+				out: 'bar',
+			},
+			{
+				in: { baz: false },
+				out: 'quxx',
+			},
+		];
+		input.forEach(payload => {
+			const result = new $1(payload.in);
+			expect(result).toEqual(payload.out);
+		});
+	});
 });
 endsnippet
 
@@ -101,8 +118,18 @@ snippet cl "console.log" b
 console.log(${1:${VISUAL}});
 endsnippet
 
+snippet cll "console.log on steroids" b
+const util = require('util');
+console.log(util.inspect(${1:${VISUAL}}, false, null, true));
+endsnippet
+
 snippet ce "console.error" b
 console.error(${1:${VISUAL}});
+endsnippet
+
+snippet cee "console.error on steroids" b
+const util = require('util');
+console.error(util.inspect(${1:${VISUAL}}, false, null, true));
 endsnippet
 
 snippet "can|has(Own)?Prop(erty)?" "description" r
@@ -130,6 +157,16 @@ snippet deepClone "deep (simple) clone function"
  * @returns {Any} - copied value
  */
 const deepClone = v => JSON.parse(JSON.stringify(v));
+endsnippet
+
+snippet entries "Object.entries" b
+Object.entries(${1:object}).forEach(([key, value]) => {
+	$0
+});
+endsnippet
+
+snippet eslint "eslint-disable" b
+/* eslint-disable no-console */
 endsnippet
 
 snippet for "for ... of" b
@@ -321,6 +358,9 @@ const result = await sequelize.query(${1:sql}, {
 		current_timestamp / 1000.0,
 		`${randSecs(10, 60)} secs`,
 	],
+	replacements: {
+		foo: 'bar',
+	},
 	type: sequelize.QueryTypes.SELECT,
 });
 endsnippet
@@ -349,7 +389,7 @@ await sequelize.query(${1:sql}, {
 endsnippet
 
 snippet "seqt(ransaction)?" "Sequelize new transaction" br
-await db.sequelize.transaction(async (transaction) => {
+const result = await db.sequelize.transaction(async (transaction) => {
 	await db.sequelize.reuseOrCreateTransaction(
 		transaction,
 		async (transaction) => {
@@ -357,5 +397,6 @@ await db.sequelize.transaction(async (transaction) => {
 			await db.bar.create({ foo: 'foo' }, { transaction });
 		},
 	);
+	return ${1:result};
 });
 endsnippet
