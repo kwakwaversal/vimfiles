@@ -1,5 +1,17 @@
 let g:projectionist_heuristics = {
       \   "*": {
+      \     "lib/*.js": {
+      \       "alternate": [
+      \         "tests/{}.test.js"
+      \       ],
+      \       "type": "source"
+      \     },
+      \     "tests/*.test.js": {
+      \       "alternate": [
+      \         "lib/{}.js"
+      \       ],
+      \       "type": "test"
+      \     },
       \     "deploy/*.sql": {
       \       "alternate": [
       \         "revert/{}.sql"
