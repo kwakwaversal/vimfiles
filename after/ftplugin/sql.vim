@@ -12,4 +12,4 @@ function! s:pgtapSqitchChange()
   call VimuxRunCommand("clear; pg_prove -v test/" . l:sqitch_change_filename)
 endfunction
 
-noremap <buffer> <LocalLeader>p :call <SID>pgtapSqitchChange()<CR>
+noremap <silent> <buffer> <LocalLeader>p :<c-u>call <SID>pgtapSqitchChange()<CR>
