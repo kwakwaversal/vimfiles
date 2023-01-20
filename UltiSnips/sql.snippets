@@ -3,7 +3,6 @@
 snippet [pgtap] "pgTAP boilerplate test" b
 BEGIN;
 
-/* SELECT plan(1); */
 SELECT no_plan();
 
 /*****************************************************************************/
@@ -445,15 +444,15 @@ endsnippet
 # SHORTCUTS
 
 snippet nn "NOT NULL"
-not null
+NOT NULL
 endsnippet
 
 snippet /ce|re/ "Raise exception" br
-RAISE EXCEPTION $0'${2:%}'${1:, 'hello'};
+RAISE EXCEPTION $0'${2:%}'${1:, (${VISUAL:'----------'})};
 endsnippet
 
 snippet /cl|rn/ "Raise notice" br
-RAISE NOTICE $0'%', ${1:'hello'};
+RAISE NOTICE $0'${2:%}'${1:, (${VISUAL:'----------'})};
 endsnippet
 
 snippet tz "Timestamp with time zone"
