@@ -124,11 +124,13 @@ nmap <C-e> :e#<CR>
 
 " vimmux - https://github.com/benmills/vimux
 " ------------------------------------------------------------------------------
-map <Leader>vb :VimuxRunCommand("!!")<CR>
-map <Leader>vi :VimuxInspectRunner<CR>
-map <Leader>vl :VimuxRunLastCommand<CR>
-map <Leader>vp :VimuxPromptCommand<CR>
-map <Leader>vz :VimuxZoomRunner<CR>
+map <silent> <Leader>vb :VimuxRunCommand("!!")<CR>
+map <silent> <Leader>vi :VimuxInspectRunner<CR>
+map <silent> <Leader>vl :VimuxRunLastCommand<CR>
+map <silent> <Leader>vp :VimuxPromptCommand<CR>
+map <silent> <Leader>vq :call VimuxSendKeys("q")<CR>
+map <silent> <Leader>vz :VimuxZoomRunner<CR>
+map <silent> <Leader>v/ :VimuxInspectRunner<CR>
 
 " Custom mappings
 " ------------------------------------------------------------------------------
