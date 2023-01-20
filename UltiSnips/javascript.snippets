@@ -317,8 +317,9 @@ snippet @f "@function jsDoc boilerplate" b
 /**
  * ${1:${VISUAL:Describe this function method}}
  * $0@param {Object} args - options
- * @param {Sequelize} [args.db] - optional db instance
- * @returns {Object} - description
+ * @param {Object} [args.db] - optional db instance
+ * @param {number} [args.count] - the count of something
+ * @returns {Promise<Object>} description
  */
 endsnippet
 
