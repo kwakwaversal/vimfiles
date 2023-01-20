@@ -13,3 +13,6 @@ function! s:pgtapSqitchChange()
 endfunction
 
 noremap <silent> <buffer> <LocalLeader>p :<c-u>call <SID>pgtapSqitchChange()<CR>
+
+noremap <silent> <buffer> <LocalLeader>i :<c-u>call VimuxRunCommand("\\i " . bufname("%"))<CR>
+noremap <silent> <buffer> <LocalLeader>q :<c-u>call VimuxSendKeys("q")<CR>
