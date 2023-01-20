@@ -16,3 +16,28 @@ noremap <silent> <buffer> <LocalLeader>p :<c-u>call <SID>pgtapSqitchChange()<CR>
 
 noremap <silent> <buffer> <LocalLeader>i :<c-u>call VimuxRunCommand("\\i " . bufname("%"))<CR>
 noremap <silent> <buffer> <LocalLeader>q :<c-u>call VimuxSendKeys("q")<CR>
+
+function! s:toggleCommentBlock()
+  " save position so we can return to it (useful when used with 'c' command)
+  let l:savePos = getpos(".")
+
+  " search backwards for an outer comment
+  if (!search('\V/*****', 'sbzc', 0))
+    return
+  endif
+
+  normal! jV
+
+  let l:pos = search('\V/*****')
+
+  if l:pos != -1
+    normal! k
+    normal gc
+
+    call setpos('.', l:savePos)
+  endif
+endfunction
+
+onoremap <silent> jo :<c-u>call <sid>toggleCommentBlock()<CR>
+xnoremap <silent> jo :<c-u>call <sid>toggleCommentBlock()<CR>
+noremap <buffer> <LocalLeader>jo :<c-u>call <sid>toggleCommentBlock()<CR><c-o>
