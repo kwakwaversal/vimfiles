@@ -112,6 +112,15 @@ git submodule foreach --recursive git fetch
 git submodule foreach git pull --ff-only origin master
 ```
 
+## Resetting plugins
+If you've updated some plugins and they're causing issues or you don't want to
+commit the updated version you can reset them:
+
+```bash
+git submodule update --init
+git submodule update --init vim-ultisnips
+```
+
 ## Removing plugins
 
 ```bash
