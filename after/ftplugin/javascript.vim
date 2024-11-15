@@ -1,4 +1,4 @@
-setlocal equalprg=prettier\ --stdin-filepath\ %\ --trailing-comma\ all\ --single-quote
+setlocal equalprg=prettier\ --trailing-comma\ all\ --single-quote\ --parser=babel
 
 let g:javascript_plugin_jsdoc = 1
 
