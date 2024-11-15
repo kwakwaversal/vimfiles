@@ -74,3 +74,4 @@ function! SetupSqitchFile()
 endfunction
 
 autocmd BufRead,BufNewFile sqitch.plan call SetupSqitchFile()
+autocmd BufRead,BufNewFile sqitch.plan setlocal commentstring=#\ %s
