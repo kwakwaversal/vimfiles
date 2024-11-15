@@ -131,6 +131,36 @@ git rm --cached bundle/vim-powerline
 See [https://stackoverflow.com/questions/10168449/git-update-submodule-recursive]
 for more information.
 
+# neovim
+
+```
+pip3 install --upgrade pip
+pip3 install --user neovim
+mkdir ~/.vim/tmp
+```
+
+Install `makedeb` and build `neovim` package.
+
+```
+# If you're running in a noninteractive environment (such as in CI or on a server), change `-ci` to `-c`.
+bash -ci "$(wget -qO - 'https://shlink.makedeb.org/install')"
+
+sudo apt install cmake
+git clone https://mpr.makedeb.org/neovim
+cd neovim/
+makedeb -si
+```
+
+```
+# ~/.config/nvim/init
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vim/vimrc
+set viminfo='10,\"100,:20,%,n~/.nviminfo
+```
+
+See: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#using-virtual-environments
+
 # References
 * [Faster and more natural splits](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
 * [Guide to modern web development with neovim](https://medium.freecodecamp.org/a-guide-to-modern-web-development-with-neo-vim-333f7efbf8e2)
