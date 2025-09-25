@@ -35,6 +35,20 @@ directly from within `vim` itself.
 :CocInstall coc-tsserver coc-eslint coc-json coc-prettier
 ```
 
+## [copilot](https://github.com/github/copilot)
+
+Only works with neovim. Install the plugin using the following command:
+
+```bash
+git clone https://github.com/github/copilot.vim.git ~/.config/nvim/pack/github/start/copilot.vim
+```
+
+Then, run the following command in neovim:
+
+```bash
+:Copilot setup
+```
+
 # Updating vim
 
 Update/install the latest version of vim (optionally with clipboard support).
