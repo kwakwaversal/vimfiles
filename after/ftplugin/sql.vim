@@ -1,5 +1,7 @@
 setlocal equalprg=sql-formatter-cli
 
+setlocal commentstring=/*\ %s\ */
+
 " Takes the current buffer path and splits on expected sqitch folders. This
 " has not been fully tested against edge cases where a username is called
 " `test` for example. Probably will not work.
