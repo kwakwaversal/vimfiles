@@ -19,27 +19,60 @@ noremap <silent> <buffer> <LocalLeader>p :<c-u>call <SID>pgtapSqitchChange()<CR>
 noremap <silent> <buffer> <LocalLeader>i :<c-u>call VimuxRunCommand("\\i " . bufname("%"))<CR>
 noremap <silent> <buffer> <LocalLeader>q :<c-u>call VimuxSendKeys("q")<CR>
 
-function! s:toggleCommentBlock()
-  " save position so we can return to it (useful when used with 'c' command)
-  let l:savePos = getpos(".")
+function! s:commentOtherBlocks()
+  let view = winsaveview()
+  let markers = []
 
-  " search backwards for an outer comment
-  if (!search('\V/*****', 'sbzc', 0))
+  " Collect all marker line numbers
+  for lnum in range(1, line('$'))
+    if getline(lnum) ==# '/*****************************************************************************/'
+      call add(markers, lnum)
+    endif
+  endfor
+
+  if len(markers) < 2
+    echo 'No blocks found'
+    call winrestview(view)
     return
   endif
 
-  normal! jV
-
-  let l:pos = search('\V/*****')
-
-  if l:pos != -1
-    normal! k
-    normal gc
-
-    call setpos('.', l:savePos)
+  " Find which block cursor is in
+  let cur = line('.')
+  let current = -1
+  for i in range(0, len(markers)-2)
+    if cur > markers[i] && cur < markers[i+1]
+      let current = i
+      break
+    endif
+  endfor
+  if current == -1
+    echo 'Cursor not inside a block'
+    call winrestview(view)
+    return
   endif
+
+  " Comment all other blocks that contain uppercase SELECT
+  for i in range(0, len(markers)-2)
+    if i != current
+      let start = markers[i] + 1
+      let finish = markers[i+1] - 1
+
+      " scan the block lines for SELECT
+      let hasSelect = 0
+      for lnum in range(start, finish)
+        if match(getline(lnum), '\CSELECT') != -1
+          let hasSelect = 1
+          break
+        endif
+      endfor
+
+      if hasSelect
+        execute start . ',' . finish . 'Commentary'
+      endif
+    endif
+  endfor
+
+  call winrestview(view)
 endfunction
 
-onoremap <silent> jo :<c-u>call <sid>toggleCommentBlock()<CR>
-xnoremap <silent> jo :<c-u>call <sid>toggleCommentBlock()<CR>
-noremap <buffer> <LocalLeader>jo :<c-u>call <sid>toggleCommentBlock()<CR><c-o>
+noremap <buffer> <LocalLeader>jo :<c-u>call <sid>commentOtherBlocks()<CR>
