@@ -26,36 +26,45 @@ let javaScript_fold=1
 
 " Toggle `only` in the closest `test(...)` or `it(...)` block.
 "
-" test('foo', () => {})    <-> test.only('foo', () => {})
-" it.only('foo', () => {}) <-> it('foo', () => {})
-function! s:jestTestOnly(toggle)
-  " save position so we can return to it (useful when used with 'c' command)
+" Usage:
+" - Press `djo` in normal mode to toggle `.only` on the nearest test or it block.
+" - Press `<leader>jo` in normal mode to toggle `.only` without moving the cursor.
+"
+function! s:jestTestOnly()
+  " Save the current cursor position
   let l:savePos = getpos(".")
 
-  " search backwards for the word `test` or `it`
-  if (!search('^\s*\(test\|it\)', 'sbzc', 0))
+  " Search backwards for a line starting with optional whitespace followed by 'test' or 'it'
+  if !search('^\s*\(test\|it\)', 'b', 0)
+    echo "No test or it block found."
     return
   endif
 
-  if (!search('\.only(', 'zc', line(".")))
-    if (a:toggle == 1)
-      normal! f(i.only
-    endif
-    call setpos('.', l:savePos)
-    return
-  endif
+  " Get the current line after the search
+  let l:line = getline('.')
 
-  if (a:toggle == 1)
-    normal! dt(
-    call setpos('.', l:savePos)
+  " Determine if '.only' is present
+  if l:line =~ '\.only('
+    " Remove '.only' from the line
+    let l:new_line = substitute(l:line, '\.only', '', '')
+    call setline('.', l:new_line)
   else
-    normal! vt(
+    " Add '.only' after 'test' or 'it'
+    let l:new_line = substitute(l:line, '\(^\s*\)\(test\|it\)', '\1\2.only', '')
+    call setline('.', l:new_line)
   endif
+
+  " Restore the original cursor position
+  call setpos('.', l:savePos)
 endfunction
 
-onoremap <silent> jo :<c-u>call <sid>jestTestOnly(0)<cr>
-xnoremap <silent> jo :<c-u>call <sid>jestTestOnly(0)<cr>
-noremap <buffer> <LocalLeader>jo :<c-u>call <sid>jestTestOnly(1)<cr><c-o>
+" Operator-pending mode mapping for 'jo'
+" This allows commands like 'djo' to work as expected
+onoremap <silent> jo :<C-U>call <SID>jestTestOnly()<CR>
+
+" Normal mode mapping for '<leader>jo'
+" Toggles '.only' without moving the cursor
+nnoremap <silent> <LocalLeader>jo :call <SID>jestTestOnly()<CR>
 
 function! s:aroundFunction()
     " search backwards for the word function
