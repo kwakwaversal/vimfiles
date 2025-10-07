@@ -71,14 +71,8 @@ set wildmenu                    " adds menu with multple `:find` or `:b` results
 command! MakeTags !ctags -R .
 nnoremap ,js :-1read $HOME/.vim/.skeleton.js<CR>
 
-" https://shapeshed.com/vim-netrw/#nerdtree-like-setup
-let g:netrw_altv=1              " open splits to the right
-let g:netrw_banner=0            " disable annoying banner
-let g:netrw_browse_split=4      " open in prior window
-let g:netrw_liststyle=3         " tree view
-let g:netrw_winsize = 25        " width of any opened files
-" let g:netrw_list_hide=netrw_gitignore#Hide()    " does not work, needs work
-" let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'  " does not work, needs work
+" Netrw sidebar configuration lives in plugin/netrw_tree.vim
+
 " augroup ProjectDrawer
 "   autocmd!
 "   autocmd VimEnter * :Vexplore
