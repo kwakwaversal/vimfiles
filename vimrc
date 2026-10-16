@@ -167,7 +167,6 @@ set backupcopy=yes
 
 " FZF - https://github.com/junegunn/fzf.vim
 " ------------------------------------------------------------------------------
-set rtp+=~/.fzf
 
 " let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 let $FZF_DEFAULT_OPTS="--preview-window 'right:57%' --preview 'bat --style=numbers --line-range :300 {}'
