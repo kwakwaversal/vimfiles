@@ -7,6 +7,12 @@ if !exists("g:syntax_on")
   syntax enable
 endif
 
+" coc.nvim is vim9script now; older vims misparse it and spin at 100% CPU
+let g:use_coc = has('nvim-0.8.0') || has('patch-9.0.0438')
+if !g:use_coc
+  let g:pathogen_disabled = ['coc.nvim']
+endif
+
 execute pathogen#infect()
 
 " General
@@ -209,6 +215,11 @@ let g:fzf_action = {
 
 " Plugins
 " ------------------------------------------------------------------------------
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+if g:use_coc
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -234,10 +245,8 @@ nnoremap <silent><nowait><expr> <S-f> coc#float#has_scroll() ? coc#float#scroll(
 inoremap <silent><nowait><expr> <S-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<C-o>\<S-f>"
 vnoremap <silent><nowait><expr> <S-f> coc#float#has_scroll() ? coc#float#scroll(0) : "\<S-f>"
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+endif
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
