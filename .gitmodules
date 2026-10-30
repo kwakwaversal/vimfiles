@@ -77,3 +77,7 @@
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "bundle/copilot.vim"]
+	path = bundle/copilot.vim
+	url = https://github.com/github/copilot.vim.git
+	shallow = true

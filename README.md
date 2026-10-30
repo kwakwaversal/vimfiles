@@ -37,16 +37,19 @@ directly from within `vim` itself.
 
 ## [copilot](https://github.com/github/copilot)
 
-Only works with neovim. Install the plugin using the following command:
+Tracked as a submodule in `bundle/copilot.vim`, so it loads in both vim and
+neovim. Requires Vim 9.0.0185+ or Neovim 0.8+ and Node.js 22+; older Vims
+skip it silently. Sign in once from within vim or neovim:
 
-```bash
-git clone https://github.com/github/copilot.vim.git ~/.config/nvim/pack/github/start/copilot.vim
+```
+:Copilot setup
 ```
 
-Then, run the following command in neovim:
+If upgrading from the old `~/.config/nvim/pack` install, remove it so neovim
+doesn't load two copies:
 
 ```bash
-:Copilot setup
+rm -rf ~/.config/nvim/pack/github/start/copilot.vim
 ```
 
 # Updating vim
@@ -75,6 +78,7 @@ fonts] `Liberation Mono for Powerline`.
 [Pathogen] is used as the plugin manager of choice.
 
 * [ack-vim](https://github.com/mileszs/ack.vim) searching files
+* [copilot.vim](https://github.com/github/copilot.vim) GitHub Copilot suggestions
 * [solarized](https://github.com/altercation/vim-colors-solarized) colour scheme
 * [vim-airline](https://github.com/vim-airline/vim-airline) status/tabline
 * [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) airline themes
