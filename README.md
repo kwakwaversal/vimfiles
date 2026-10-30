@@ -132,7 +132,7 @@ commit the updated version you can reset them:
 
 ```bash
 git submodule update --init
-git submodule update --init vim-ultisnips
+git submodule update --init bundle/vim-ultisnips
 ```
 
 ## Removing plugins

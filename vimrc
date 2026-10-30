@@ -71,6 +71,9 @@ let g:airline_theme='powerlineish'
 " let g:airline_left_sep=''
 " let g:airline_right_sep=''
 " let g:airline_section_z=''
+let g:airline#extensions#branch#format = 2               " feature/foo -> f/foo
+let g:airline#extensions#branch#displayed_head_limit = 30
+let g:airline#extensions#coc#enabled = g:use_coc         " diagnostics counts
 
 set path+=**                    " fuzzy finding using vanilla vim and `:find`
 set wildmenu                    " adds menu with multple `:find` or `:b` results
